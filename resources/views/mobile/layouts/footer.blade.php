@@ -2,7 +2,7 @@
 <div id="reader" style="width:100%"></div>
 </div>
 <input id="results" type='hidden'>
-@foreach ($config as $item)
+@foreach (\App\Config::all() as $item)
 <input type="hidden" id="session" value="{!! $item->session !!}" >    
 @endforeach
 
@@ -56,7 +56,7 @@
             url: "{!! route('member.attendcane.store') !!}",
             data:{
                 "_token": "{{ csrf_token() }}",
-                "id":  {!! $member->id  !!},
+                "id":  {!! \Auth::guard('member')->user()->id  !!},
 
             },
             success: function(){
