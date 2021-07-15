@@ -41,10 +41,10 @@
                 setTimeout(function() {
                 window.location.replace("{!! route('member.home') !!}");}
                 , 3000);
+                 html5QrCode.stop();
                 }
           });
         }
-      html5QrCode.stop();
       
     };
 
