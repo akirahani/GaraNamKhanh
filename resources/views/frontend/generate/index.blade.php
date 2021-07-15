@@ -1,7 +1,7 @@
 
 <div class="qrcode-container" style="text-align: center; display: block; margin: 100px auto">
     @foreach ($config as $item)
-         <div class="qrcode" id="qrcode">{{  QrCode::size(650)->generate($item->session) }}</div>
+         <div class="qrcode" id="qrcode">{{  QrCode::size(500)->generate($item->session) }}</div>
     @endforeach
 
 </div>
