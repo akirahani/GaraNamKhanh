@@ -48,7 +48,9 @@
       
     };
 
-    const config = { fps: 10, qrbox: 500, aspectRatio: 1.58888 };
+    const config = { fps: 10, qrbox: 500, aspectRatio: 1.58888,experimentalFeatures: {
+                useBarCodeDetectorIfSupported: true
+            } };
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
 
 </script>
