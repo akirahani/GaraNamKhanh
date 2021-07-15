@@ -69,8 +69,11 @@
                             setTimeout(function() {
                             window.location.replace("{!! route('member.home') !!}");}
                             , 1000);
-                              html5QrCode.stop();
-                              break;
+                             html5QrCode.stop().then((ignore) => {
+                                // QR Code scanning is stopped.
+                              }).catch((err) => {
+                                // Stop failed, handle it.
+                              });
                     },
                     error: function(XMLHttpRequest, textStatus, errorThrown) { 
                         Swal.fire({
