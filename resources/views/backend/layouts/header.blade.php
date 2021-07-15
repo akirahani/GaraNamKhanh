@@ -80,11 +80,12 @@
                     <li class="dropdown-divider"></li>
                     <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
                     <li class="dropdown-divider"></li>
-                    <li class="dropdown-item"><i class="icon-power mr-2"></i>
-
-                        <a class="dropdown-item" href="{{ route('admin.logout') }}" >
+                    <li class="dropdown-item">
+                        <a href="{{ route('admin.logout') }}" >
+                            <i class="icon-power mr-2"></i>
                             {{ __('Logout') }}
                         </a>
+                        
 
                     </li>
                 </ul>

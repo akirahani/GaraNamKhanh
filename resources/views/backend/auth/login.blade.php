@@ -7,7 +7,7 @@
         <div class="d-flex justify-content-center " style="height:90%">
             <div class="card">
                 <div class="card-header">
-                    <h3> LogIn</h3>
+                    <h3> Đăng nhập</h3>
                 </div>
                 <div class="card-body"  >
                     <form method="POST" action="{{ route('login') }}" style="padding: 5% ">

@@ -235,12 +235,12 @@ a{
   position: relative;
   content: " ";
   height: 2px;
-  width: 20px;
+  width: 164px;
   margin: 10px 0 0px 0;
   background: #9575cd;
 }
 .sec-tit.center:after{
-  margin: 10px auto 0px auto;
+  margin: 1px auto 0px auto;
 }
 
 .sec-tit.white-text:after{
@@ -867,7 +867,7 @@ body .noUi-target.noUi-vertical .noUi-tooltip{
   border-radius: 36px;
 }
 .btn, .btn-large, .btn-small, .btn-floating{
-  background-color: #9575CD;
+  background-color: #005d69;
 }
 .btn:hover, .btn-large:hover, .btn-small:hover, .btn-floating:hover,
 .btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {

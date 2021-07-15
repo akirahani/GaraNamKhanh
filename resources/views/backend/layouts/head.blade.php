@@ -13,12 +13,11 @@
     <link href="{{ asset('assets2/css/custom.css') }}" rel="stylesheet"/>
     <!-- Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <link rel="icon" href='https://ouransoft.vn/upload/logo-ouransoft.png' type="image/x-icon">
 
     <link href=" {{ asset('assets/css/pace.min.css') }}" rel="stylesheet"/>
     <script src=" {{ asset('assets/js/pace.min.js') }}"></script>
     <!--favicon-->
-    <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
     <!-- Vector CSS -->
     <!-- simplebar CSS-->
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet"/>

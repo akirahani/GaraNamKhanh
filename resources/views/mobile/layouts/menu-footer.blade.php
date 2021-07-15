@@ -8,12 +8,12 @@
     <ul>
         <li>
             <a href="javascript:void(0)"> <i class="mdi mdi-home-outline"></i>
-                <span>Home</span>
+                <span>Trang chủ</span>
             </a>
         </li>
         <li>
             <a href="javascript:void(0)"> <i class="mdi mdi-message-text-outline"></i>
-                <span>Chat</span>
+                <span>Tin nhắn</span>
             </a>
         </li>
         <li>
@@ -23,12 +23,12 @@
         </li>
         <li>
             <a href="javascript:void(0)"> <i class="mdi mdi-notification-clear-all"></i>
-                <span>Notification</span>
+                <span>Thông báo</span>
             </a>
         </li>
         <li>
             <a href="{{ route('member.account') }}"> <i class="mdi mdi-account-circle"></i>
-                <span>Account</span>
+                <span>Tài khoản</span>
             </a>
         </li>
     </ul>

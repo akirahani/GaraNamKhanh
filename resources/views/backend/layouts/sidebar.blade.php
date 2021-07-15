@@ -6,7 +6,7 @@
           <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
 
             <div class="brand-logo">
-              <a href="{{url('admin/home')}}">
+              <a href="{{route('admin.home')}}">
                 <img src="{{ asset('assets/images/logoors.png') }}" class="logo-icon" alt="logo icon">
                 <h5 class="logo-text">Gara Admin</h5>
               </a>
@@ -15,7 +15,7 @@
             <ul class="sidebar-menu do-nicescrol">
               <li class="sidebar-header">MAIN NAVIGATION</li>
                 <li>
-                  <a href="{{url('/admin/home')}}">
+                  <a href="{{route('admin.home')}}">
                     <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                   </a>
                 </li>

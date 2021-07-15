@@ -87,7 +87,7 @@
     <div class="section">
         <div class="row ">
             <div class="col s12 pad-0">
-                <h5 class="bot-20 sec-tit center white-text">Login</h5>
+                <h5 class="bot-20 sec-tit center white-text"><img style="width:164px;background: #3a3a3a;" src="{!!asset('img/namkhanhoto.png')!!}"></h5>
                 <form method="POST" action="{{ route('member.login.submit') }}">
                     @csrf
                     <div class="row">
@@ -99,24 +99,11 @@
                     <div class="row">
                         <div class="input-field col s10 offset-s1">
                             <input id="pass3" name="password" type="password" class="validate">
-                            <label for="pass3">Password</label>
+                            <label for="pass3">Mật khẩu</label>
                         </div>
                     </div>
                     <div class="row center">
-                        <button class="waves-effect waves-light btn-large bg-primary" type="submit">Login</button>
-                        <div class="spacer"></div>
-                        <div class="links">
-                            <a href="ui-pages-forgotpassword.html" class='waves-effect'> Forgot Password
-                            </a> <span class="sep">|</span>
-                            <a href="ui-pages-register.html" class='waves-effect'> Register
-                            </a>
-                        </div>
-                        <div class="spacer"></div>
-                        <div class="links">
-                            <a href="sub-access.html" class='waves-effect'> Go Back
-                            </a>
-                        </div>
-                        <div class="spacer"></div>
+                        <button class="waves-effect waves-light btn-large btn-primary" type="submit">Đăng nhập</button>
                     </div>
                 </form>
             </div>
