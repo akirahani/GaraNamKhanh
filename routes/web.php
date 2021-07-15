@@ -9,26 +9,15 @@ use App\Http\Controllers\Backend\DashboardController;
     Route::get('/admin', 'Auth\LoginController@logoutAdmin')->name('admin.logout');
 
     Route::group(['middleware' => ['auth']], function() {
-   //home
+
 
     Route::get('/admin/home', 'Backend\DashboardController@index')->name('admin.home');
 
     //
-     Route::get('/admin/calendar', 'Backend\CalendarController@calendar')->name('calendar'); 
+    Route::get('/admin/calendar', 'Backend\CalendarController@calendar')->name('calendar'); 
     Route::post('/admin/calendar/action', 'Backend\CalendarController@post_calendar')->name('calendar.post'); 
    
-    //user
-    // Route::get('admin/table', 'AdminHomeController@table')->name('table'); 
-    // Route::post('/user/insert','AdminHomeController@insert')->name('insert');
-    // Route::get('/user/edit/{id}','AdminHomeController@edit')->name('user_update');
-    // Route::post('/user/update','AdminHomeController@update')->name('user_update');
-    // Route::get('/user/delete/{id}','AdminHomeController@delete')->name('delete');
- 
-  
-   //timekeeping
-    // Route::get('/admin/attendance','AdminHomeController@attendance')->name('attendance');
-    // Route::post('/admin/attendance','AdminHomeController@post')->name('attendance.post');
-    //report
+
     Route::get('/admin/report','Backend\ReportController@report_index')->name('report');
     Route::get('/admin/report/detail/{id}','Backend\ReportController@report_detail')->name('report.detail');
 

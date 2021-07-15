@@ -46,11 +46,9 @@ class ShiftController extends Controller
     }
 
     public function destroy($id){
-        Shift::find($id)->delete($id);
+       Shift::find($id)->delete($id);
         return redirect()->back();
-        return response()->json([
-            'success' => 'Xóa thành công'
-        ]);
+
     }
 
     public function assignment(Request $request){
@@ -78,6 +76,7 @@ class ShiftController extends Controller
     }
     public function destroyas($id){
         \App\MemberShift::find($id)->delete($id);
+
         return redirect()->back();
     }
 }
