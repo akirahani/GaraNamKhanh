@@ -38,7 +38,7 @@
                     window.location.replace("{!! route('member.home') !!}");}
                     , 1000);
                       html5QrCode.stop();
-            }
+            },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
                 Swal.fire({
                     position: 'center',
