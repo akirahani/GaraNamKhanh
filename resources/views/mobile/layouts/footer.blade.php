@@ -41,6 +41,7 @@
         $('.preloader-background').delay(10).fadeOut('slow');
     });
 </script>
+@if(\Auth::guard('member')->user())
 <script>
     const config = { fps: 10, qrbox: 250, aspectRatio: 1.58888 };
     $('#scan_qrcode').click(function(){
@@ -91,3 +92,4 @@
     })
 
 </script>
+@endif
