@@ -27,8 +27,9 @@ class AuthController extends Controller
         ];
         
         if(Auth::guard('member')->attempt($input)){
-            
-            return view('mobile.layouts.index');
+            $member = \Auth::guard('member')->user();
+            $config = \App\Config::all();
+            return view('mobile.layouts.index',compact('config','member'));
         }
         return Redirect::route('member.login')->with('error', 'Đăng nhập không thành công');
     }

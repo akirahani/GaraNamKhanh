@@ -17,7 +17,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('member.attendcane.scan') }}" class='active'> 
+            <a href="javascript:void(0)" class='active' id="scan_qrcode"> 
                 <i class="mdi mdi-qrcode-scan"></i>
             </a>
         </li>
