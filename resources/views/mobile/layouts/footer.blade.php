@@ -47,6 +47,7 @@
         const html5QrCode = new Html5Qrcode("reader");
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         document.getElementById("results").value = decodedText;
+        html5QrCode.stop();
                 var send = $('#results').val();
                 var session = $('#session').val();
                 if(send == session){
@@ -59,7 +60,7 @@
 
                     },
                     success: function(){
-                            html5QrCode.stop();
+                            
                             Swal.fire({
                               position: 'center',
                               icon: 'success',
