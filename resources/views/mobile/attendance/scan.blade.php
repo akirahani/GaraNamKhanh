@@ -1,6 +1,6 @@
 
 <div id="reader" style="width:100%"></div>
-<input id="results" type="text" type='hidden'>
+<input id="results" type='hidden'>
 @foreach ($config as $item)
 <input type="hidden" id="session" value="{!! $item->session !!}" >    
 @endforeach
@@ -20,7 +20,6 @@
         
         var send = $('#results').val();
         var session = $('#session').val();
-        
         if(send == session){
           $.ajax({
             type: "POST",
