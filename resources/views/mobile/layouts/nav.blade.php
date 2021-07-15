@@ -1,10 +1,7 @@
-
-
 <!-- START navigation -->
 <nav class="fixedtop topbar navigation" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="index.html" class=" brand-logo "><i class="mdi mdi-ring"></i>ZAK</a>
-
+        <a id="logo-container" href="/" class=" brand-logo ">OURANSOFT</a>
         <a href="#" data-target="slide-nav"
             class="waves-effect waves-circle navicon sidenav-trigger show-on-large"><i class="mdi mdi-menu"></i></a>
     </div>
@@ -19,8 +16,8 @@
                 <a href="#user"><img class="circle" src="{{ asset('assets2/mobile/images/user-37.jpg') }}"></a>
             </div>
             <div class="col s9 infoarea">
-                <a href="#name"><span class="name">Cherry Smith</span></a>
-                <a href="#email"><span class="email">cherrysmith@gmail.com</span></a>
+                <a href="#name"><span class="name">{{\Auth::guard('member')->user()->name}}</span></a>
+                <a href="#email"><span class="email">{{\Auth::guard('member')->user()->email}}</span></a>
             </div>
         </div>
     </li>
@@ -31,6 +28,7 @@
                 <div class="subheader"></div>
             </li>
             <div class="divider"></div>
+            
             <li class="lvl1 ">
                 <div class=" waves-effect ">
                     <a href="ui-pages-home.html">

@@ -70,7 +70,7 @@
                       timer: 1500
                     });
                     setTimeout(function() {
-                    window.location.replace("{!! route('member.home') !!}");}
+                    window.location.replace("{!! route('home') !!}");}
                     , 1000);
             }
           });
@@ -83,7 +83,7 @@
                     timer: 1500
                 });
             setTimeout(function() {
-                window.location.replace("{!! route('member.home') !!}");}
+                window.location.replace("{!! route('home') !!}");}
                 , 1000);
         }
 

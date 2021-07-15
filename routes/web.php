@@ -3,16 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\DashboardController;
 
-    Auth::routes();
+   
 
-    Route::get('/admin', 'Auth\LoginController@showLoginForm')->name('admin.login');
-    Route::get('/admin', 'Auth\LoginController@logoutAdmin')->name('admin.logout');
+    Route::get('/admin/login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('/admin/login', 'Auth\LoginController@postLogin')->name('login');
 
     Route::group(['middleware' => ['auth']], function() {
 
 
-    Route::get('/admin/home', 'Backend\DashboardController@index')->name('admin.home');
-
+    Route::get('/admin', 'Backend\DashboardController@index')->name('admin.home');
+    Route::get('/admin/logout', 'Auth\LoginController@logoutAdmin')->name('admin.logout');
     //
     Route::get('/admin/calendar', 'Backend\CalendarController@calendar')->name('calendar'); 
     Route::post('/admin/calendar/action', 'Backend\CalendarController@post_calendar')->name('calendar.post'); 

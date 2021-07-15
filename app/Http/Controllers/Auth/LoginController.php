@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-// use Illuminate\Support\Facades\Auth;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 class LoginController extends Controller
 {
     /*
@@ -27,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -42,10 +44,22 @@ class LoginController extends Controller
     public function showLoginForm() { 
         return view('backend.auth.login');
     }
+    
+     public function postLogin(Request $request) {
+        $input = [
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
+        ];
+        if (\Auth::attempt($input, true)) {
+            $user = Auth::user();
+            $user->save();
+            return Redirect::route('admin.home');
+        }
+        return Redirect::route('login')->with('error', 'Tài khoản hoặc mật khẩu không đúng');
+    }
 
     public function logoutAdmin() {
-
         Auth::logout();
-        return view('backend.auth.login');
+        return Redirect::route('login');
     }
 }
