@@ -28,6 +28,7 @@ class AttendanceController extends Controller
 
         $attendanes = new \App\Attendance();
         $attendanes->time_in = $time;
+        $attendanes->date = date('Y-m-d');
         $attendanes->member_id = $input['id'];
         $attendanes->shift_id = $this->gettime($time);
 
@@ -75,7 +76,5 @@ class AttendanceController extends Controller
         }
         // dd($last_shift_id);
         return $last_shift_id[0];
-
-      
     }
 }

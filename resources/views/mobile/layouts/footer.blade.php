@@ -48,41 +48,40 @@
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         document.getElementById("results").value = decodedText;
         html5QrCode.stop();
-                var send = $('#results').val();
-                var session = $('#session').val();
-                if(send == session){
-                  $.ajax({
-                    type: "POST",
-                    url: "{!! route('member.attendcane.store') !!}",
-                    data:{
-                        "_token": "{{ csrf_token() }}",
-                        "id":  {!! $member->id  !!},
+        var send = $('#results').val();
+        var session = $('#session').val();
+        if(send == session){
+          $.ajax({
+            type: "POST",
+            url: "{!! route('member.attendcane.store') !!}",
+            data:{
+                "_token": "{{ csrf_token() }}",
+                "id":  {!! $member->id  !!},
 
-                    },
-                    success: function(){
-                            
-                            Swal.fire({
-                              position: 'center',
-                              icon: 'success',
-                              title: 'Điểm danh thành công',
-                              showConfirmButton: false,
-                              timer: 1500
-                            });
-                            setTimeout(function() {
-                            window.location.replace("{!! route('member.home') !!}");}
-                            , 1000);
-                    },
-                    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'error',
-                            title: 'Mã Qrcode không đúng',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }  
-                  });
-                }
+            },
+            success: function(){
+
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Điểm danh thành công',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                    setTimeout(function() {
+                    window.location.replace("{!! route('member.home') !!}");}
+                    , 1000);
+            }
+          });
+        }else{
+            Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Mã Qrcode không đúng',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+        }
 
             };
          html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
