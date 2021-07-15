@@ -37,7 +37,7 @@
                     setTimeout(function() {
                     window.location.replace("{!! route('member.home') !!}");}
                     , 1000);
-                      html5QrCode.stop();
+                      html5QrCode.clear();
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
                 Swal.fire({
