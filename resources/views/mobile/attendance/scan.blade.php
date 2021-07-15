@@ -1,8 +1,8 @@
 
 <div id="reader" style="width:100%"></div>
-<input id="results" type="text" >
+<input id="results" type="text" type='hidden'>
 @foreach ($config as $item)
-    <input type="text" id="session" value="{!! $item->session !!}">    
+<input type="hidden" id="session" value="{!! $item->session !!}" >    
 @endforeach
 
 
@@ -40,8 +40,8 @@
                 });
                 setTimeout(function() {
                 window.location.replace("{!! route('member.home') !!}");}
-                , 3000);
-                 html5QrCode.stop();
+                , 1000);
+                  html5QrCode.stop();
                 }
           });
         }
