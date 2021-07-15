@@ -40,7 +40,9 @@ class AuthController extends Controller
     }
 
     public function index(){
-        return view('mobile.layouts.index');
+        $member = \Auth::guard('member')->user();
+        $config = \App\Config::all();
+        return view('mobile.layouts.index',compact('config','member'));
     }
     public function showFormlogin(){
         return view('frontend.auth.login');
