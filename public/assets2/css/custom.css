@@ -1,0 +1,32 @@
+.list-assignment{
+    border: 1px solid;
+    height: auto;
+}
+.list-member{
+    border: 1px solid;
+    overflow-y: auto;
+    height: 300px;
+}
+div.list-member{
+    overflow-y: auto;
+}
+div.list-shift{
+    overflow-y: auto;
+}
+label{
+    margin-left: 20px;
+    }
+#datepicker{
+    width:180px; 
+    margin: 0 20px 20px 20px;
+}
+#datepicker > span:hover{
+    cursor: pointer;
+}
+#datepicker2{
+    width:180px; 
+    margin: 0 20px 20px 20px;
+}
+#datepicker2 > span:hover{
+    cursor: pointer;
+}
