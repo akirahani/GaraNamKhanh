@@ -30,3 +30,26 @@ label{
 #datepicker2 > span:hover{
     cursor: pointer;
 }
+#nav-home #add_group{
+    margin-top: 15px;
+}
+.list-member{
+    margin-top: 15px;
+}
+.list-time{
+    margin-top: 15px;
+}
+.btn-add{
+    display: inline-block;
+    border-radius: 70%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border: 1px solid;
+}
+.create-assign{
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}

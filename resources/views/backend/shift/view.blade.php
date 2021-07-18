@@ -13,35 +13,41 @@
             <form action="{{ route('backend.groupshift.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="input-6">Tên nhóm ca</label>
-                    <input name="name" type="text" class="form-control form-control-rounded" id="input-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="input-4">Tên nhóm ca</label>
+                            <input name="name" type="text" class="form-control form-control-rounded" id="input-3">
+                        </div>
+                    </div>
                 </div>
-                <div class="container" id="form-add">
+                
+                <div id="form-add">
                     <div class="add">
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="input-7">Thời gian bắt đầu</label>
-                                <input name="start_time[]" type="text" class="form-control form-control-rounded" id="input-7">
+                                <input name="start_time[]" type="time" class="form-control form-control-rounded" id="input-6">
                             </div>
                             <div class="col-md-3">
                                 <label for="input-9">Thời gian kết thúc</label>
-                                <input name="end_time[]" type="text" class="form-control form-control-rounded" id="input-9">
+                                <input name="end_time[]" type="time" class="form-control form-control-rounded" id="input-6">
                             </div>
-                            <div class="col-md-2" style="margin-top: 35px;">
-                                <a class="btn-add" href="javascript:void(0)">+</a>
+                            <div class="col-md-3" style="margin-top: 40px;">
+                                <a class="btn-add " href="javascript:void(0)">+</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="submit">ok</button>
+                <button type="submit" class="btn btn-dark" id="add_group">Thêm</button>
             </form>
+
             <div class="row mt-3">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title"></h5>       
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" style="text-align:center;">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -61,7 +67,7 @@
                                                 <td>{{ $item->end_time }}</td>
                                                 <td>
                                                     <a href="{{ route('backend.shift.destroy',$item->id) }}">
-                                                        <button type="button">Xóa</button>
+                                                        <button type="button" class="btn btn-dark">Xóa</button>
                                                     </a>
                                                 </td>
                                             </tr>    
@@ -89,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="p-3 border bg-light">
+                                <div class="p-3 border bg-light list-time">
                                     <div class="row">
                                         <div class="col-6">
                                             <label>Ngày bắt đầu: </label>
@@ -113,7 +119,13 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit">OK</button>
+                        <div class="row g-0">
+                            <div class="col-sm-6 col-md-8"></div>
+                            <div class="col-6 col-md-4 create-assign">
+                                <button type="button" class="btn btn-dark">Tạo mới</button>
+                            </div>
+                        </div>
+                        
                     </form>
             </div>
         </div>
@@ -124,7 +136,7 @@
                         <div class="card-body">
                             <h5 class="card-title"></h5>       
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" style="text-align: center;">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -144,9 +156,11 @@
                                                 <td>{!! \App\Groupshift::where('id',[$item->group_id])->first()->name !!}</td>
                                                 <td>
                                                     <a href="{{ route('backend.assignment.destroy',$item->id) }}">
-                                                        <button type="button">Xóa</button>
+                                                        <button type="button" class="btn btn-dark">Xóa</button>
                                                     </a>
-
+                                                    <a href="{{ route('backend.assignment.destroy',$item->id) }}">
+                                                        <button type="button" class="btn btn-dark">Sửa</button>
+                                                    </a>
                                                 </td>
                                             </tr>    
                                             @endforeach            
@@ -181,11 +195,11 @@
                                             '<div class="row">'+
                                                 '<div class="col-md-3">'+
                                                     '<label for="input-7">Thời gian bắt đầu</label>'+
-                                                    '<input name="start_time[]" type="text" class="form-control form-control-rounded" id="input-7">'+
+                                                    '<input name="start_time[]" type="time" class="form-control form-control-rounded" id="input-7">'+
                                                 '</div>'+
                                                 '<div class="col-md-3">'+
                                                     '<label for="input-9">Thời gian kết thúc</label>'+
-                                                    '<input name="end_time[]" type="text" class="form-control form-control-rounded" id="input-9">'+
+                                                    '<input name="end_time[]" type="time" class="form-control form-control-rounded" id="input-9">'+
                                                 '</div>'+
                                                 '<div class="col-md-2" style="margin-top: 35px;">'+
                                                     '<a class="btn-add" href="javascript:void(0)">+</a>'+
