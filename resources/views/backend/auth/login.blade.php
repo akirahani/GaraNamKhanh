@@ -2,7 +2,7 @@
 @include('backend.layouts.head')
     <link href="{{ asset('assets/css/app-style.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
-<body style="background-image: url('./assets/images/backadmin.jpg')">
+<body style="background-image: url('/assets/images/backadmin.jpg')">
     <div class="container">
         <div class="d-flex justify-content-center " style="height:90%">
             <div class="card">

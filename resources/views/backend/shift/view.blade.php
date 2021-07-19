@@ -122,7 +122,7 @@
                         <div class="row g-0">
                             <div class="col-sm-6 col-md-8"></div>
                             <div class="col-6 col-md-4 create-assign">
-                                <button type="button" class="btn btn-dark">Tạo mới</button>
+                                <button type="submit" class="btn btn-dark">Tạo mới</button>
                             </div>
                         </div>
                         
