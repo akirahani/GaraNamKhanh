@@ -5,8 +5,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('backend.member.create') }}">
-                    <button>Thêm</button>
+            <a class="btn btn-success" href="{{ route('backend.member.create') }}">
+                    <i class="fas fa-user-plus"></i>
                 </a>
                 <h5 class="card-title"></h5>       
                 <div class="table-responsive">
@@ -28,11 +28,11 @@
                                     <td>{{ $item->email }}</td>
                                     <td>
                                         
-                                        <a href="{{ route('backend.member.edit',$item->id) }}">
-                                            <button type="button">Sửa</button>
+                                        <a class="btn btn-info"href="{{ route('backend.member.edit',$item->id) }}">
+                                            <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{ route('backend.member.destroy',$item->id) }}">
-                                            <button type="button" >Xóa</button>
+                                        <a data-id="{{$item->id}}" class="memdel btn btn-danger">
+                                            <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
                                 </tr>    
@@ -45,5 +45,23 @@
         </div>
     </div>
 </div>
+<script>
+        $('.memdel').click(function(){
+         const id = $(this).data('id');
+         var cfrm = confirm("Bạn có chắc chắn muốn xóa ?");
+             if(cfrm == true){
+              $.ajax({
+                  method:"get",
+                  url: "/admin/member/destroy/"+id,
+                  data: {
+                    'id': id,
+                  },
+                  success:function(){
+                    $('#member-del'+id).remove();
+                  }
 
+              });
+          }
+        });
+    </script>
 @endsection

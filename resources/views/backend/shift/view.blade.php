@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-dark" id="add_group">Thêm</button>
+                <button type="submit"class="btn btn-success "  id="add_group">Thêm</button>
             </form>
 
             <div class="row mt-3">
@@ -67,7 +67,7 @@
                                                 <td>{{ $item->end_time }}</td>
                                                 <td>
                                                     <a href="{{ route('backend.shift.destroy',$item->id) }}">
-                                                        <button type="button" class="btn btn-dark">Xóa</button>
+                                                        <button type="button" class="btn btn-danger">  <i class="fas fa-trash-alt"></i></button>
                                                     </a>
                                                 </td>
                                             </tr>    
@@ -122,7 +122,7 @@
                         <div class="row g-0">
                             <div class="col-sm-6 col-md-8"></div>
                             <div class="col-6 col-md-4 create-assign">
-                                <button type="submit" class="btn btn-dark">Tạo mới</button>
+                                <button type="submit" class="btn btn-success">Tạo mới</button>
                             </div>
                         </div>
                         
@@ -156,10 +156,10 @@
                                                 <td>{!! \App\Groupshift::where('id',[$item->group_id])->first()->name !!}</td>
                                                 <td>
                                                     <a href="{{ route('backend.assignment.destroy',$item->id) }}">
-                                                        <button type="button" class="btn btn-dark">Xóa</button>
+                                                        <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                                     </a>
                                                     <a href="{{ route('backend.assignment.destroy',$item->id) }}">
-                                                        <button type="button" class="btn btn-dark">Sửa</button>
+                                                        <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
                                                     </a>
                                                 </td>
                                             </tr>    
