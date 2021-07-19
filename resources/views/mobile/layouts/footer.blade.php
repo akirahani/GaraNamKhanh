@@ -47,47 +47,37 @@
     $('#scan_qrcode').click(function(){
         const html5QrCode = new Html5Qrcode("reader");
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-        document.getElementById("results").value = decodedText;
-        html5QrCode.stop();
-        var send = $('#results').val();
-        var session = $('#session').val();
-        if(send == session){
-          $.ajax({
-            type: "POST",
-            url: "{!! route('member.attendcane.store') !!}",
-            data:{
-                "_token": "{{ csrf_token() }}",
-                "id":  {!! \Auth::guard('member')->user()->id  !!},
-
-            },
-            success: function(){
-
-                    Swal.fire({
-                      position: 'center',
-                      icon: 'success',
-                      title: 'Điểm danh thành công',
-                      showConfirmButton: false,
-                      timer: 1500
+            document.getElementById("results").value = decodedText;
+            html5QrCode.stop();
+            var send = $('#results').val();
+            var session = $('#session').val();
+            if(send == session){
+              
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'success',
+                          title: 'Điểm danh thành công',
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
+                        setTimeout(function() {
+                        window.location.replace("{!! route('home') !!}");}
+                        , 1000);
+               
+              
+            }else{
+                Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Mã Qrcode không đúng',
+                        showConfirmButton: false,
+                        timer: 1500
                     });
-                    setTimeout(function() {
+                setTimeout(function() {
                     window.location.replace("{!! route('home') !!}");}
                     , 1000);
             }
-          });
-        }else{
-            Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'Mã Qrcode không đúng',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            setTimeout(function() {
-                window.location.replace("{!! route('home') !!}");}
-                , 1000);
-        }
-
-            };
+        };
          html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     })
 
