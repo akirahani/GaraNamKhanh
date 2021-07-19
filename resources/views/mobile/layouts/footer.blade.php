@@ -52,7 +52,15 @@
             var send = $('#results').val();
             var session = $('#session').val();
             if(send == session){
-              
+              $.ajax({
+                type: "POST",
+                url: "{!! route('member.attendcane.store') !!}",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    "id":  {!! \Auth::guard('member')->user()->id  !!},
+
+                },
+                success: function(){
                         Swal.fire({
                           position: 'center',
                           icon: 'success',
@@ -63,8 +71,8 @@
                         setTimeout(function() {
                         window.location.replace("{!! route('home') !!}");}
                         , 1000);
-               
-              
+                }
+              });
             }else{
                 Swal.fire({
                         position: 'center',
