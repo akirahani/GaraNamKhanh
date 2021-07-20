@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label for="input-9">Password</label>
-                    <input name="password" type="text" class="form-control form-control-rounded" id="input-9">
+                    <input name="password" type="password" class="form-control form-control-rounded" id="input-9">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-light btn-round px-5"></i>

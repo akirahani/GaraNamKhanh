@@ -26,7 +26,7 @@ use App\Http\Controllers\Backend\DashboardController;
     Route::get('/admin/member/create', 'Backend\MemberController@create')->name('backend.member.create');
     Route::post('/admin/member/store', 'Backend\MemberController@store')->name('backend.member.store');
     Route::get('/admin/member/edit/{id}', 'Backend\MemberController@edit')->name('backend.member.edit');
-    Route::put('/admin/member/update/{id}','Backend\MemberController@update')->name('backend.member.update');
+    Route::post('/admin/member/update','Backend\MemberController@update')->name('backend.member.update');
     Route::get('/admin/member/destroy/{id}','Backend\MemberController@destroy')->name('backend.member.destroy');
     
     //Shift

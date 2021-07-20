@@ -28,16 +28,25 @@ class MemberController extends Controller
         $member = Member::find($id);
         return view('backend.member.edit')->with('member',$member);
     }
-    public function update(Request $request, $id){
-        $member = Member::find($id);
-        $member->name = $request->name; 
-        $member->email = $request->email;
-        $member->save();
+    public function update(Request $request,Member $member){
+        
+        $id = $request->input('id');
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $password =bcrypt($request->input('password'));
+        $data = array(
+            'name' => $name,
+            'email' => $email,
+            'password'=>$password,
+     
+        );
+       $member->where('id',$id)->update($data); 
         return redirect()->route('backend.member.view');
     }
-    public function destroy($id){
-        $member = Member::find($id);
-        $member->delete();
-        return redirect()->back();
+    public function destroy($id, Member $member){
+        $member->where('id',$id)->delete();
+        return response()->json([
+            'success'=>'Acccount has been delete'
+        ]); 
     }
 }

@@ -14,8 +14,6 @@
      
     </div>
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-
-
     <script src="    {{ asset('assets/js/bootstrap.min.js') }}"></script>
           <script src=" {{ asset('assets/js/popper.min.js') }}"></script>
    <!-- simplebar js -->
