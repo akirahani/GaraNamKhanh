@@ -67,7 +67,7 @@
                                                 <td>{{ $item->end_time }}</td>
                                                 <td>
                                                     <a href="{{ route('backend.shift.destroy',$item->id) }}">
-                                                        <button type="button" class="btn btn-dark">Xóa</button>
+                                                        <button type="button" class="btn btn-danger">Xóa</button>
                                                     </a>
                                                 </td>
                                             </tr>    
@@ -122,7 +122,7 @@
                         <div class="row g-0">
                             <div class="col-sm-6 col-md-8"></div>
                             <div class="col-6 col-md-4 create-assign">
-                                <button type="button" class="btn btn-dark">Tạo mới</button>
+                                <button type="button" class="btn btn-success">Tạo mới</button>
                             </div>
                         </div>
                         
@@ -130,48 +130,8 @@
             </div>
         </div>
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-            <div class="row mt-3">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"></h5>       
-                            <div class="table-responsive">
-                                <table class="table" style="text-align: center;">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Họ và tên</th>
-                                            <th scope="col">Ngày</th>
-                                            <th scope="col">Ca</th>
-                                            <th scope="col">Tác vụ</th>                             
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            @foreach ($member_shift as $key => $item)
-                                            <tr>
-                                                <td scope="row">{{ $key+1 }}</td>
-                                                <td>{!! \App\Member::where('id',[$item->member_id])->first()->name !!}</td>
-                                                <td>{{ $item->date }}</td>
-                                                <td>{!! \App\Groupshift::where('id',[$item->group_id])->first()->name !!}</td>
-                                                <td>
-                                                    <a href="{{ route('backend.assignment.destroy',$item->id) }}">
-                                                        <button type="button" class="btn btn-dark">Xóa</button>
-                                                    </a>
-                                                    <a href="{{ route('backend.assignment.destroy',$item->id) }}">
-                                                        <button type="button" class="btn btn-dark">Sửa</button>
-                                                    </a>
-                                                </td>
-                                            </tr>    
-                                            @endforeach            
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      
+
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
