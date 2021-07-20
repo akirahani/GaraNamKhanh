@@ -8,7 +8,7 @@ use App\Shift;
 use App\Member;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Arr;
-
+use DB;
 class ShiftController extends Controller
 {
     public function index(){
@@ -16,6 +16,7 @@ class ShiftController extends Controller
         $member = Member::all();
         $group_shift = \App\Groupshift::all();
         $member_shift = \App\MemberShift::all();
+
         return view("backend.shift.view",compact('shift','member','group_shift','member_shift'));
        
     }
@@ -46,9 +47,13 @@ class ShiftController extends Controller
     }
 
     public function destroy($id){
-       Shift::find($id)->delete($id);
-        return redirect()->back();
-
+        $group_id = Shift::find($id);
+        $count = DB::table('shift')->where('group_id',$group_id->group_id)->count();
+        if($count == 1){
+            DB::table('group_shift')->where('id',$group_id->group_id)->delete();
+        }
+        $group_id->delete();
+        return redirect()->back(); 
     }
 
     public function assignment(Request $request){

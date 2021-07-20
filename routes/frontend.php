@@ -4,12 +4,6 @@ Route::get('/login','Auth\AuthController@showFormlogin')->name('member.login');
 Route::post('/login','Auth\AuthController@loginMember')->name('member.login.submit');
 Route::post('/logout','Auth\AuthController@logoutMember')->name('member.logout');
 
-
-//Generate QRcode
-Route::get('/qrcode','Frontend\QrcodeController@index')->name('qrcode');
-Route::post('qrcode/update','Frontend\QrcodeController@update')->name('qrcode.update');
-
-
 Route::group(['middleware' => ['member']], function() {
     Route::get('/', 'Auth\AuthController@index')->name('home');
     //Attendance

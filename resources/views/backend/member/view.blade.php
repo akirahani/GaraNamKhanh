@@ -29,10 +29,10 @@
                                     <td>
                                         
                                         <a href="{{ route('backend.member.edit',$item->id) }}">
-                                            <button type="button">Sửa</button>
+                                            <button type="button" class="btn btn-info">Sửa</button>
                                         </a>
                                         <a href="{{ route('backend.member.destroy',$item->id) }}">
-                                            <button type="button" >Xóa</button>
+                                            <button type="button" class="btn btn-danger">Xóa</button>
                                         </a>
                                     </td>
                                 </tr>    

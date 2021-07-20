@@ -15,7 +15,7 @@ class AttendanceController extends Controller
 {
     public function scan(){
         $member = Auth::guard('member')->user();
-        $config = Config::all();
+        $config = Config::first();
         return view('mobile.attendance.scan',compact('member','config'));
     }
 

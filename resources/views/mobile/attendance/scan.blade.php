@@ -1,9 +1,9 @@
 
 <div id="reader" style="width:100%"></div>
 <input id="results" type='hidden'>
-@foreach ($config as $item)
-<input type="hidden" id="session" value="{!! $item->session !!}" >    
-@endforeach
+
+<input type="hidden" id="session" value="{!! \App\Config::first()->session !!}" >    
+
 
 <script src="{{ asset('assets2/js/html5-qrcode.min.js') }}"></script>
 <script src="{{ asset('assets2/js/sweetalert2.all.min.js') }}"></script>
