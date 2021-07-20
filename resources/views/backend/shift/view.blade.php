@@ -1,5 +1,9 @@
 @extends('backend.layouts.index')
 @section('content')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Quản lý nhóm ca</a>
@@ -88,7 +92,7 @@
                         <div class="row g-2">
                             <div class="col-6">
                                 <div class="p-3 border bg-light list-member">
-                                    @foreach ($member as $item)
+                                    @foreach ($members as $item)
                                         <input type="checkbox" name="member_id[]" value="{{ $item->id }}">
                                         <label for="vehicle1">{{ $item->name }}</label><br>                            
                                     @endforeach
@@ -136,35 +140,32 @@
                         <div class="card-body">
                             <h5 class="card-title"></h5>       
                             <div class="table-responsive">
+                            <label for="startDate">Chọn tháng/ năm</label>
+                                <form action="{{url('/admin/shift')}}" method="GET" class="form-view">
+                                 <input type="text" class="form-control" name="datepicker3"  id="datepicker3" autocomplete="off" value="@if(isset($_GET['datepicker3'])) {!!$_GET['datepicker3']!!}   @endif" >
+                                    <input type="submit" id="submit" hidden >
+                                </form>
                                 <table class="table" style="text-align: center;">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+                                  
                                             <th scope="col">Họ và tên</th>
-                                            <th scope="col">Ngày</th>
-                                            <th scope="col">Ca</th>
-                                            <th scope="col">Tác vụ</th>                             
+                                            @foreach($records as $record)
+                                            <th scope="col">{{$record['date']}} </th>     
+                                            @endforeach                       
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($members as $key=>$member)
                                         <tr>
-                                            @foreach ($member_shift as $key => $item)
-                                            <tr>
-                                                <td scope="row">{{ $key+1 }}</td>
-                                                <td>{!! \App\Member::where('id',[$item->member_id])->first()->name !!}</td>
-                                                <td>{{ $item->date }}</td>
-                                                <td>{!! \App\Groupshift::where('id',[$item->group_id])->first()->name !!}</td>
-                                                <td>
-                                                    <a href="{{ route('backend.assignment.destroy',$item->id) }}">
-                                                        <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                    </a>
-                                                    <a href="{{ route('backend.assignment.destroy',$item->id) }}">
-                                                        <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
-                                                    </a>
-                                                </td>
-                                            </tr>    
+                                            <td>{!! $member['name'] !!}</td>
+                                            @foreach ($member->ShiftName as $key => $item)
+                                               
+                                                <td>{{$item['ShiftName']}}</td>
+
                                             @endforeach            
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -209,4 +210,15 @@
             });
         });
     </script>
+    <script>
+            $("#datepicker3").datepicker({
+            format: "yyyy-mm",
+            startView: "months", 
+            minViewMode: "months", 
+        });
+        $('#datepicker3').change(function(){
+            $('.form-view').find('input[type=submit]').click();
+            // $('#nav-contact').dialog();
+        });
+  </script>
 @endsection
