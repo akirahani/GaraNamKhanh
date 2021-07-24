@@ -35,6 +35,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function boot()
     {
         //
@@ -54,6 +55,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapFERoutes();
+
+        $this->mapCustomerRoutes();
         //
     }
 
@@ -64,6 +67,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected function mapCustomerRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/customer.php'));
+    }
     protected function mapWebRoutes()
     {
         Route::middleware('web')
