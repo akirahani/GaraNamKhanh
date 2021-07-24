@@ -4,6 +4,9 @@ Route::get('/login','Auth\AuthController@showFormlogin')->name('member.login');
 Route::post('/login','Auth\AuthController@loginMember')->name('member.login.submit');
 Route::post('/logout','Auth\AuthController@logoutMember')->name('member.logout');
 
+
+
+
 Route::group(['middleware' => ['member']], function() {
     Route::get('/', 'Auth\AuthController@index')->name('home');
     //Attendance

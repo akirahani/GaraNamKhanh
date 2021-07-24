@@ -23,34 +23,35 @@ class AttendanceController extends Controller
     public function attendance(Request $request){
 
         $input = $request->all();
-        $auth_id = Auth::guard('member')->user()->id;
-        $time = Carbon::now('Asia/Ho_Chi_Minh')->toTimeString();
+        if($input['code'] ==  \App\Config::first()->session){
+            $auth_id = Auth::guard('member')->user()->id;
+            $time = Carbon::now('Asia/Ho_Chi_Minh')->toTimeString();
+            
+            $attendanes = new \App\Attendance();
+            $attendanes->time_in = $time;
+            $attendanes->date = date('Y-m-d');
+            $attendanes->member_id = $input['id'];
+            $attendanes->shift_id = $this->gettime($time);
 
-        $attendanes = new \App\Attendance();
-        $attendanes->time_in = $time;
-        $attendanes->date = date('Y-m-d');
-        $attendanes->member_id = $input['id'];
-        $attendanes->shift_id = $this->gettime($time);
-
-        if(DB::table('attendance')->where('member_id',$auth_id)->get()->isEmpty()){
-            $attendanes->save();
-        }
-        else{
-            $check_time = DB::table('attendance')->where('member_id',$auth_id)->where('type',0)->first();
-   
-            if($check_time){
-                
-                DB::table('attendance')->where('member_id',$auth_id)->where('type',0)->update([
-                    'type' => 1,
-                    'time_out' => $time,
-                ]);
-            }
-            else
-            {
+            if(DB::table('attendance')->where('member_id',$auth_id)->get()->isEmpty()){
                 $attendanes->save();
             }
+            else{
+                $check_time = DB::table('attendance')->where('member_id',$auth_id)->where('type',0)->first();
+    
+                if($check_time){
+                    
+                    DB::table('attendance')->where('member_id',$auth_id)->where('type',0)->update([
+                        'type' => 1,
+                        'time_out' => $time,
+                    ]);
+                }
+                else
+                {
+                    $attendanes->save();
+                }
+            }
         }
-
     }
     public function gettime($time){
         

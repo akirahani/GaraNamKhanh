@@ -20,24 +20,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                @foreach ($member as $key => $item)
-                                <tr>
-                                    <td scope="row">{{ $member->firstItem() + $key }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>
-                                        
-                                        <a class="btn btn-info"href="{{ route('backend.member.edit',$item->id) }}">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a data-id="{{$item->id}}" class="memdel btn btn-danger">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </td>
-                                </tr>    
-                                @endforeach            
-                            </tr>
+                            @foreach ($member as $key => $item)
+                            <tr id="member-{{$item->id}}">
+                                <td scope="row">{{ $member->firstItem() + $key }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>
+                                    
+                                    <a class="btn btn-info"href="{{ route('backend.member.edit',$item->id) }}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a data-id="{{$item->id}}" class="memdel btn btn-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>    
+                            @endforeach 
                         </tbody>
                     </table>
                 </div>
@@ -45,19 +43,20 @@
         </div>
     </div>
 </div>
-<script>
+    <script>
         $('.memdel').click(function(){
          const id = $(this).data('id');
          var cfrm = confirm("Bạn có chắc chắn muốn xóa ?");
              if(cfrm == true){
               $.ajax({
-                  method:"get",
+                  method:"post",
                   url: "/admin/member/destroy/"+id,
                   data: {
-                    'id': id,
+                    "_token": "{{ csrf_token() }}",
+                    'id': id
                   },
                   success:function(){
-                    $('#member-del'+id).remove();
+                    $('#member-'+id).remove();
                   }
 
               });

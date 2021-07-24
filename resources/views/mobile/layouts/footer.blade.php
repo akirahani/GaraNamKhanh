@@ -2,9 +2,9 @@
 <div id="reader" style="width:100%"></div>
 </div>
 <input id="results" type='hidden'>
-@foreach (\App\Config::all() as $item)
-<input type="hidden" id="session" value="{!! $item->session !!}" >    
-@endforeach
+
+<input type="hidden" id="session" value="{!! \App\Config::first() !!}" >    
+
 
 <script src="{{ asset('assets2/mobile/js/jquery-2.2.4.min.js') }}"></script>
 <script src="{{ asset('assets2/mobile/js/materialize.js') }}"></script>
@@ -49,44 +49,43 @@
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             document.getElementById("results").value = decodedText;
             html5QrCode.stop();
-            var send = $('#results').val();
+            var code = $('#results').val();
             var session = $('#session').val();
-            if(send == session){
-              $.ajax({
+            
+            $.ajax({
                 type: "POST",
                 url: "{!! route('member.attendcane.store') !!}",
                 data:{
                     "_token": "{{ csrf_token() }}",
                     "id":  {!! \Auth::guard('member')->user()->id  !!},
-
+                    "code": code
                 },
                 success: function(){
                         Swal.fire({
-                          position: 'center',
-                          icon: 'success',
-                          title: 'Điểm danh thành công',
-                          showConfirmButton: false,
-                          timer: 1500
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Điểm danh thành công',
+                            showConfirmButton: false,
+                            timer: 1500
                         });
                         setTimeout(function() {
                         window.location.replace("{!! route('home') !!}");}
                         , 1000);
-                }
-              });
-            }else{
-                Swal.fire({
+                },
+                error: function() { 
+                    Swal.fire({
                         position: 'center',
                         icon: 'error',
                         title: 'Mã Qrcode không đúng',
                         showConfirmButton: false,
                         timer: 1500
                     });
-                setTimeout(function() {
-                    window.location.replace("{!! route('home') !!}");}
-                    , 1000);
-            }
+                }     
+                
+            });
+        
         };
-         html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+        html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     })
 
 </script>
