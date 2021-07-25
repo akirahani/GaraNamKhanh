@@ -44,9 +44,10 @@ class MemberController extends Controller
         return redirect()->route('backend.member.view');
     }
     public function destroy($id, Member $member){
-        $member->where('id',$id)->delete();
-        return response()->json([
-            'success'=>'Acccount has been delete'
+        \App\Member::find($id)->delete();
+        return response()->json([   
+                     
+            'success'=>'Xóa thành công'
         ]); 
     }
 }
