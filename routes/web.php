@@ -24,18 +24,17 @@ use Illuminate\Support\Facades\Route;
     Route::post('/admin/member/store', 'Backend\MemberController@store')->name('backend.member.store');
     Route::get('/admin/member/edit/{id}', 'Backend\MemberController@edit')->name('backend.member.edit');
     Route::post('/admin/member/update','Backend\MemberController@update')->name('backend.member.update');
-    Route::get('/admin/member/destroy/{id}','Backend\MemberController@destroy')->name('backend.member.destroy');
+    Route::post('/admin/member/destroy/{id}','Backend\MemberController@destroy')->name('backend.member.destroy');
     
     //Shift
     Route::get('/admin/shift','Backend\ShiftController@index')->name('backend.shift.view');
-    Route::get('/admin/shift/create','Backend\ShiftController@create')->name('backend.shift.create');
-    Route::get('/admin/shift/edit/{id}','Backend\ShiftController@edit')->name('backend.shift.edit');
-    Route::get('/admin/shift/update/{id}','Backend\ShiftController@update')->name('backend.shift.update');
+
+    Route::post('/admin/shift/update','Backend\ShiftController@update')->name('backend.shift.update');
     Route::post('/admin/shift/store','Backend\ShiftController@store')->name('backend.shift.store');
-    Route::get('/admin/shift/destroy/{id}','Backend\ShiftController@destroy')->name('backend.shift.destroy');
+    Route::post('/admin/shift/destroy','Backend\ShiftController@delete')->name('backend.shift.destroy');
     
     Route::post('/admin/assignment/store','Backend\ShiftController@assignment')->name('backend.shift.assignment');
-    Route::get('/admin/assignment/destroy/{id}','Backend\ShiftController@destroyas')->name('backend.assignment.destroy');
+    Route::get('/admin/assignment/destroy/{id}','Backend\ShiftController@destroy_group')->name('backend.assignment.destroy');
 
     Route::post('/admin/groupshift/store','Backend\GroupShiftController@store')->name('backend.groupshift.store');
     // customer
@@ -45,6 +44,11 @@ use Illuminate\Support\Facades\Route;
        Route::get('/admin/customer/edit/{id}','Backend\Customer\InfomationController@edit')->name('backend.customer.edit');
        Route::post('/admin/customer/update','Backend\Customer\InfomationController@update')->name('backend.customer.update');
        Route::get('/admin/customer/delete/{id}' ,'Backend\Customer\InfomationController@delete')->name('backend.customer.delete');
+
+    //Generate QRcode
+    Route::get('/qrcode','Frontend\QrcodeController@index')->name('qrcode');
+    Route::post('qrcode/update','Frontend\QrcodeController@update')->name('qrcode.update');
+
     });
 
 

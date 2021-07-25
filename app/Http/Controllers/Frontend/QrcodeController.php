@@ -11,7 +11,7 @@ use App\Helpers\UserSystemInfoHelper;
 class QrcodeController extends Controller
 {
     public function index(Request $request){
-        $config = Config::all();
+        $config = \App\Config::first();
         //if( UserSystemInfoHelper::get_device() != 'Mobile'){
             return view('frontend.generate.index',compact('config'));
         //}
@@ -19,7 +19,7 @@ class QrcodeController extends Controller
     }
 
     public function update(Request $request){
-        $config = Config::all()->first();
+        $config = Config::first();
         $config->session = $request->input; 
         $config->save();
         
