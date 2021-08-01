@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:api']], function() {
+
+    Route::post('/book/insert','Api\BookController@store')->name('book.store');
+   
+ 
 });
 
 // Route::middleware('auth:admin-api')->get('/admin', function (Request $request) {

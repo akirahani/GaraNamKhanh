@@ -14,7 +14,7 @@
 
             <ul class="sidebar-menu do-nicescrol">
       
-                <li><h5>Quản lí chấm công</h5>
+                <li class="p-2"><h5>Quản lí chấm công</h5>
                   <li>
                  
                       <a href="{{url('/admin/calendar')}}">
@@ -39,36 +39,52 @@
                       </li>
                  
                 </li>
-                <li><h5>Quản lí khách hàng</h5>
+                <li class="p-2"><h5>Quản lí Gara</h5>
                   <li>
-                      <a href="{{url('/admin')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Quản lí xếp lịch</span>
+                      <a href="{{url('/admin/schedule')}}">
+                        <i class="zmdi zmdi-calendar-alt"></i> <span>Quản lí xếp lịch</span>
                       </a>
                   </li>
                   <li>
                       <a href="{{url('/admin/customer')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Thông tin khách hàng</span>
+                        <i class="zmdi zmdi-account"></i> <span>Thông tin khách hàng</span>
                       </a>
                   </li>
                   <li>
-                      <a href="{{url('')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Quản lí thanh toán</span>
+                      <a href="{{url('/admin/repair')}}">
+                          <i class="zmdi zmdi-assignment-o"></i><span>Quản lí lệnh sửa</span> 
                       </a>
                   </li>
+                  <li>
+                      <a  id="drop-down" href="{{url('/admin/spare')}}">
+                        <i class="zmdi zmdi-wrench"></i><span>Lịch sử xuất phụ tùng</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="{{url('/admin/supplier')}}">
+                         <i class="zmdi zmdi-accounts-list"></i><span>Quản lí nhà cung cấp</span>
+                      </a>
+                  </li> 
+                  <li>
+                      <a href="{{url('#')}}">
+                        <i class="zmdi zmdi-car"></i> <span>Quản lí xe đến gara</span>
+                      </a>
+                  </li> 
+                  <li>
+                      <a href="{{url('#')}}">
+                        <i class="zmdi zmdi-money"></i> <span>Quản lí thanh toán</span>
+                      </a>
+                  </li> 
                 </li>
-                <li><h5>Quản lí phụ tùng, vật tư</h5>
-                  <li>
-                      <a href="{{url('')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Quản lí phụ tùng</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="{{url('')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Quản lí vật tư</span>
-                      </a>
-                  </li>
-                </li>
+        
+                  
+             
               
 
             </ul>
 </div>
+<script>
+    $('#drop-down').click(function(){
+         $('#down-content').toggle();
+      });
+</script>

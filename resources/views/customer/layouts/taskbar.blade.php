@@ -36,9 +36,10 @@
 </style>
 <div id="task-bar" class="task-bar-1" style="transform: translateX(0px);">
 
-    <a href="index-components.html"><i class="fa fa-star"></i><span>Khách thân</span></a>
-    <a href="index-pages.html"><i class="fa fa-heart"></i><span>Yêu thích</span></a>
-    <a href="index.html" class="active-nav"><i class="fa fa-home"></i><span>Trang chủ</span></a>
+    <!-- <a href="index-components.html"><i class="fa fa-star"></i><span>Khách thân</span></a> -->
+    <!-- <a href="index-pages.html"><i class="fa fa-heart"></i><span>Yêu thích</span></a> -->
     <a href="index-search.html"><i class="fa fa-search"></i><span>Tìm kiếm</span></a>
+    <a href="index.html" class="active-nav"><i class="fa fa-home"></i><span>Trang chủ</span></a>
+
     <a href="#" data-menu="menu-settings"><i class="fas fa-bell"></i><span>Thông báo</span></a>
 </div>

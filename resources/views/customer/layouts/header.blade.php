@@ -41,15 +41,12 @@
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 			<div class="swiper-slide swiper-slide-active" style="width: 295px;">
 				<div class="user-details">
-					<div class="user-details__thumb"><img src="../assets/images/photos/avatar.jpg" alt="" title=""></div>
+					<div class="user-details__thumb"><img src="" alt="" title=""></div>
 					<div class="user-details__title"><span>Hello</span> Patrick Vue</div>
 				</div>
 				<nav class="main-nav">
 					<ul>
-						<li class="subnav opensubnav"><img src="../assets/images/icons/gray/home.svg" alt="" title=""><span>Home Pages</span><i><img src="../assets/images/icons/gray/arrow-right.svg" alt="" title=""></i></li>
-						<li><a href="main.html"><img src="../assets/images/icons/gray/checked.svg" alt="" title=""><span>Features</span></a></li>
-						<li><a href="blog.html"><img src="../assets/images/icons/gray/news.svg" alt="" title=""><span>News</span></a></li>	
-						<li><a href="shop.html"><img src="../assets/images/icons/gray/cart.svg" alt="" title=""><span>Shop</span></a></li>
+					
 					</ul>
 				</nav>
 			</div>	
@@ -57,9 +54,9 @@
 		    </div>
 		<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
 </div>
-  <div id="panel-right"><div class="panel panel--right active">
+<div class="panel panel--right active">
 		<div class="user-profile">
-			<div class="user-profile__thumb"><img src="../assets/images/photos/avatar.jpg" alt="" title=""></div>
+			<div class="user-profile__thumb"><img src="" alt="" title=""></div>
 			<div class="user-profile__name">Patrick Vue</div>
 			<div class="buttons buttons--centered mb-20">
 				<div class="info-box"><span>Followers</span> 25k</div>
@@ -76,7 +73,6 @@
 			</ul>
 		</nav>
 </div>  
-<!-- <div class="page page--intro" data-page="intro"> -->
 	
 <header class="header header--fixed" style="background-color:#1864ce;">	
 		<div class="header__inner">	
@@ -85,8 +81,8 @@
 </a></div>	
 			<div class="header__icon open-panel" data-panel="right" data-arrow="left"><i class="fas fa-user-circle" style="color:#fff"></i>
                 </div>
-	</header>
-<!-- </div> -->
+</header>
+
  
   <script src="{{asset('assets/js/header_customer.js')}}" ></script> 
   <script src="{{asset('assets/js/swipper.js')}}" ></script> 
