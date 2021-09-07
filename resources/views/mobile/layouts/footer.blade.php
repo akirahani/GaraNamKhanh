@@ -19,7 +19,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         $(".carousel-fullscreen.carousel-slider").carousel({
             fullWidth: true,
             indicators: true
@@ -44,7 +43,7 @@
 @if(\Auth::guard('member')->user())
 <script>
     const config = { fps: 10, qrbox: 250, aspectRatio: 1.58888 };
-    $('#scan_qrcode').click(function(){
+    $('body').delegate('#scan_qrcode','click',function(){
         const html5QrCode = new Html5Qrcode("reader");
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             document.getElementById("results").value = decodedText;

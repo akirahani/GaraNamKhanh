@@ -18,10 +18,8 @@ class AttendanceController extends Controller
         $config = Config::all();
         return view('mobile.attendance.scan',compact('member','config'));
     }
-
   
     public function attendance(Request $request){
-
         $input = $request->all();
         $auth_id = Auth::guard('member')->user()->id;
         $time = Carbon::now('Asia/Ho_Chi_Minh')->toTimeString();

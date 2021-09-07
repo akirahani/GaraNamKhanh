@@ -9,7 +9,6 @@ class CalendarController extends Controller
 {
     public function calendar(Request $request)
     {
-
         if($request->ajax()){
             $data= Calendar::whereDate('date','=',$request->date)
                         ->get(['id','type_date','date','title']);
