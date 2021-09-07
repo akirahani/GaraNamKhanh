@@ -42,19 +42,16 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+            'driver' => 'passport',
+            'provider' => 'members',
+            // 'hash' => false,
         ],
 
         'member' => [
             'driver' => 'session',
             'provider' => 'members',
         ],
-        'customer'=>[
-            'driver' => 'session',
-            'provider' => 'customers',
-        ],
+    
     ],
 
     /*
@@ -78,11 +75,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
-        ],
-
-        'customers' => [
-            'driver' => 'eloquent',
-            'model' => App\Customer::class,
         ],
 
         'members' => [

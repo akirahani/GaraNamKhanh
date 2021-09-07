@@ -11,16 +11,17 @@ class InfomationController extends Controller
         $customer = Customer::all();
         return view('backend.customer.infomation',compact('customer'));
     }
-    public function insert(Request $requset){
+    public function insert(){
         return view('backend.customer.insert');
     }
-    public function store(Request $requset){
+    public function store(Request $request){
+        $input =$request->all();
         $customer = new Customer;
-        $customer->name = $requset->input('name');
-        $customer->email = $requset->input('email');
-        $customer->password = $requset->input('password');
-        $customer->phone = $requset->input('phone');
-        $customer->address = $requset->input('address');
+        $customer->name = $input['name'];
+        $customer->email = $input['email'];
+        $customer->password = bcrypt($input['password']);
+        $customer->phone = $input['phone'];
+        $customer->address = $input['address'];
         $customer->save();
         return redirect()->route('backend.customer');
     }
@@ -29,19 +30,19 @@ class InfomationController extends Controller
         return view('backend.customer.edit')->with('customer',$customer);
     }
     public function update(Request $request,Customer $customer){
-        
-        $id = $request->input('id');
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $phone = $request->input('phone');
-        $address = $request->input('address');
-        // $password =bcrypt($request->input('password'));
+        $input =$request->all();
+        $id = $input['id'];
+        $name = $input['name'];
+        $email = $input['email'];
+        $phone =$input['phone'];
+        $address = $input['address'];
+        $password =bcrypt($input['password']);
         $data = array(
             'name' => $name,
             'email' => $email,
             'phone' =>$phone,
-            'address'=>$address
-            // 'password'=>$password,
+            'address'=>$address,
+            'password'=>$password,
      
         );
        $customer->where('id',$id)->update($data); 

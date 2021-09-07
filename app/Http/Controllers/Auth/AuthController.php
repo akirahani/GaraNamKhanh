@@ -29,12 +29,17 @@ class AuthController extends Controller
         if(Auth::guard('member')->attempt($input)){
             $member = \Auth::guard('member')->user();
             $config = \App\Config::all();
+            $token = $member->createToken('namkhanh')->accessToken;
+            $member->token = $token;
+            $member->save();
             return Redirect::route('home');
         }
         return Redirect::route('member.login')->with('error', 'Đăng nhập không thành công');
     }
     public function logoutMember() {
-        
+        if(\Auth::guard('member')->user()){
+            \Auth::guard('member')->user()->tokens()->delete();
+        }
         Auth::guard('member')->logout();
         return Redirect::route('member.login');
     }

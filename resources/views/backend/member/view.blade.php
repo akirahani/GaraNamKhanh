@@ -56,7 +56,7 @@
                     'id': id
                   },
                   success:function(){
-                    $('#member-del'+id).remove();
+                    $('#member-'+id).remove();
                   }
 
               });

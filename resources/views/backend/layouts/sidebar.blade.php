@@ -14,7 +14,7 @@
 
             <ul class="sidebar-menu do-nicescrol">
       
-                <li><h5>Quản lí chấm công</h5>
+                <li class="p-2"><h5>Quản lí chấm công</h5>
                   <li>
                  
                       <a href="{{url('/admin/calendar')}}">
@@ -39,35 +39,125 @@
                       </li>
                  
                 </li>
-                <li><h5>Quản lí khách hàng</h5>
+                <li >   
+                         <ul style="list-style:none; display:flex ; padding:1%">
+                           <li style=" padding:1%"> <i class="fas fa-warehouse"></i></li>
+                           <li style=" padding:1%"><span><h5>Quản lí Gara</h5></span></li>
+                         </ul> 
+                        
                   <li>
-                      <a href="{{url('/admin')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Quản lí xếp lịch</span>
+                      <a  href="#down-content2"  data-toggle="collapse" >
+                        <i class="zmdi zmdi-calendar-alt"></i> <span>Quản lí xếp lịch</span> <i class="fa fa-caret-down" style="margin-left:22%;"></i>
+                     
                       </a>
+                      <li id="down-content2" class="collapse" style="margin-left:10%;">
+                            <a href="{{url('/admin/schedule')}}">
+                              <i class="zmdi zmdi-undo"></i> <span>Phản hồi đặt lịch</span>
+                            </a>
+                            <a >
+                              <i class="zmdi zmdi-redo"></i> <span>Nhắc lịch bảo dưỡng</span>
+                            </a>
+                        </li>
                   </li>
                   <li>
                       <a href="{{url('/admin/customer')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Thông tin khách hàng</span>
+                        <i class="zmdi zmdi-account"></i> <span>Thông tin khách hàng</span>
                       </a>
                   </li>
                   <li>
-                      <a href="{{url('')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Quản lí thanh toán</span>
+                      <a  href="#down-content" data-toggle="collapse" class="drop-down">
+                        <i class="fas fa-boxes"></i>
+                        <span>QL kho</span>  <i class="fa fa-caret-down" style="margin-left:45%;"></i>
                       </a>
+                          <li id="down-content" class="collapse" style="margin-left:10%;">
+                              <a href="{{url('/admin/spare/exist')}}">
+                                <i class="fas fa-dolly-flatbed"></i> <span>Tồn kho</span>
+                              </a>
+                              <a href="{{url('/admin/file/out')}}">
+                                <i class="fas fa-file-export"></i>  <span>Phiếu xuất</span>
+                              </a>
+                              <a href="{{url('/admin/spare/out')}}">
+                                <i class="zmdi zmdi-redo"></i> <span>Lịch sử xuất</span>
+                              </a>
+                              <a href="{{url('/admin/file/in')}}">
+                                <i class="fas fa-file-import"></i> <span>Phiếu nhập</span>
+                              </a>
+                              <a href="{{url('/admin/spare/in')}}" id ="drop-down-on">
+                                  <i class="zmdi zmdi-undo"></i> <span>Lịch sử nhập </span>
+                              </a> 
+                          </li>
                   </li>
+                  <li>
+                      <a  href="#down-content4" data-toggle="collapse" >
+                        <i class="fas fa-cogs"></i>
+                        <span>Thông tin phụ tùng</span> <i class="fa fa-caret-down" style="margin-left:7%;"></i>
+                      </a>
+                          <li id="down-content4" class="collapse" style="margin-left:10%;">
+                            <a href="{{url('/admin/spare/search/index')}}">
+                              <i class="fas fa-search-dollar"></i> <span>Tham khảo</span>
+                            </a>
+                            <a href="{{url('/admin/spare/base')}}">
+                              <i class="zmdi zmdi-wrench"></i> <span>Tên phụ tùng</span>
+                            </a>
+                            <a href="{{url('/admin/spare/type')}}">
+                              <i class="fas fa-clipboard-list"></i> <span>Chủng loại</span>
+                            </a>
+                            <a href="{{url('/admin/supplier')}}">
+                              <i class="zmdi zmdi-accounts-list"></i><span>Quản lí nhà cung cấp</span>
+                            </a>      
+                          </li>
+                  </li>
+                  <li>
+
+                      <a  href="#down-content3" data-toggle="collapse">
+                        <i class="far fa-list-alt"></i>
+                        <span>QL dịch vụ</span>  <i class="fa fa-caret-down"  style="margin-left:35%;"></i>
+                      </a>
+               
+                          <li id="down-content3" class="collapse" style="margin-left:10%;">
+                            <a href="{{url('/admin/repair')}}">
+                              <i class="zmdi zmdi-assignment-o"></i><span>Quản lí lệnh sửa</span> 
+                            </a>
+                            <a href="{{url('/admin/response/index')}}">
+                              <i class="fas fa-reply-all"></i><span>Báo giá</span>
+                            </a>
+                            <a href="{{url('/admin/detailws/index')}}">
+                              <i class="fas fa-clipboard-check"></i><span>Chi tiết PT và Công việc</span>
+                            </a>
+                          </li>
+                  
+                  </li>
+                  <li>
+                      <a href="#down-content1" data-toggle="collapse">
+                        <i class="zmdi zmdi-car"></i>
+                        <span>Quản lí xe đến gara</span>  <i class="fa fa-caret-down" style="margin-left:10%;"></i>
+                      </a>
+                          <li id="down-content1" class="collapse" style="margin-left:10%;">
+                            <a href="{{url('/admin/car/index')}}">
+                              <i class="fas fa-info-circle"></i> <span>Thông tin xe</span>
+                            </a>
+                            <a href="{{url('/admin/car/company/index')}}">
+                              <i class="fas fa-location-arrow"></i><span>Công ty bảo hiểm</span>
+                            </a>
+                            <a href="{{url('/admin/car/type/index')}}">
+                              <i class="fas fa-list-ol"></i><span>Loại xe</span>
+                            </a>
+                            <a href="#">
+                              <i class="fas fa-history"></i> <span>Lịch sử xe đến gara</span>
+                            </a>
+                          </li>
+                  
+                  
+                  </li> 
+                  <li>
+                      <a href="">
+                        <i class="zmdi zmdi-money"></i> <span>Quản lí thanh toán</span>
+                      </a>
+                  </li> 
                 </li>
-                <li><h5>Quản lí phụ tùng, vật tư</h5>
-                  <li>
-                      <a href="{{url('')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Quản lí phụ tùng</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="{{url('')}}">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Quản lí vật tư</span>
-                      </a>
-                  </li>
-                </li>
+        
+                  
+             
               
 
             </ul>

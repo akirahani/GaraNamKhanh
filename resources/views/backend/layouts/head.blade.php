@@ -12,8 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link href="{{ asset('assets2/css/custom.css') }}" rel="stylesheet"/>
     <!-- Fonts -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-    <link rel="icon" href='https://ouransoft.vn/upload/logo-ouransoft.png' type="image/x-icon">
+     <script src="{{ asset('assets/js/ajax-jquery.3.6.0.js') }}"></script> 
+    <link rel="icon" href=" {{ asset('assets/images/logo-ouransoft.png') }}" type="image/x-icon">
 
     <link href=" {{ asset('assets/css/pace.min.css') }}" rel="stylesheet"/>
     <script src=" {{ asset('assets/js/pace.min.js') }}"></script>
@@ -33,9 +33,16 @@
     <link href="{{ asset('assets/css/app-style.css') }}" rel="stylesheet"/>
 
     <link href="{{ asset('assets/plugins/fullcalendar/css/fullcalendar.min.css') }}" rel='stylesheet'/>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel='stylesheet' />
 
-    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
-  
+    <link rel="stylesheet prefetch" href="{{ asset('assets/css/bootstrap-datepicker.css') }}">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="/DataTables-1.10.7/media/css/jquery.dataTables.css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf8" src="/DataTables-1.10.7/media/js/jquery.js"></script>
+
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="/DataTables-1.10.7/media/js/jquery.dataTables.js"></script>
 </head>
