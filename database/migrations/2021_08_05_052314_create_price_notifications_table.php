@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCalendarsTable extends Migration
+class CreatePriceNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateCalendarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('calendars', function (Blueprint $table) {
+        Schema::create('price_notifications', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('type_date');
-            $table->dateTime('date');
-            $table->string('title');
+            $table->string('status');
+            $table->bigInteger('customer_id');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateCalendarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('calendars');
+        Schema::dropIfExists('price_notifications');
     }
 }
