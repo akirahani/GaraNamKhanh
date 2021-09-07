@@ -5,9 +5,6 @@ Route::post('/login','Auth\AuthController@loginMember')->name('member.login.subm
 Route::post('/logout','Auth\AuthController@logoutMember')->name('member.logout');
 
 
-//Generate QRcode
-Route::get('/qrcode','Frontend\QrcodeController@index')->name('qrcode');
-Route::post('qrcode/update','Frontend\QrcodeController@update')->name('qrcode.update');
 
 
 Route::group(['middleware' => ['member']], function() {

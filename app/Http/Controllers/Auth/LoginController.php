@@ -46,13 +46,13 @@ class LoginController extends Controller
     }
     
      public function postLogin(Request $request) {
+     
         $input = [
             'email' => $request->get('email'),
             'password' => $request->get('password')
         ];
         if (\Auth::attempt($input, true)) {
             $user = Auth::user();
-            $user->save();
             return Redirect::route('admin.home');
         }
         return Redirect::route('login')->with('error', 'Tài khoản hoặc mật khẩu không đúng');

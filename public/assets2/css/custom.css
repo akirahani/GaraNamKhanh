@@ -53,3 +53,24 @@ label{
     justify-content: flex-end;
     margin-bottom: 10px;
 }
+#datepicker3{
+    max-width: 300px;
+}
+#modalUpdate h5{
+    color: black;
+}
+#modalUpdate label{
+    color: black;
+    width: 30%;
+}
+#modalUpdate .modal-body{
+    display: inline-block;
+    justify-content: center;
+}
+#modalUpdate label{
+    color: black;
+}
+#modalUpdate option{
+    /* color: #fff; */
+    background-color: #fff;
+}
