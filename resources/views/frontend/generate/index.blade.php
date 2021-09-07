@@ -1,8 +1,6 @@
-
 <div class="qrcode-container" style="text-align: center; display: block; margin: 100px auto">
     <div class="qrcode" id="qrcode">{{  QrCode::size(500)->generate(\App\Config::first()->session) }}</div>
 </div>
-
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script>
     

@@ -18,10 +18,8 @@ class AttendanceController extends Controller
         $config = Config::first();
         return view('mobile.attendance.scan',compact('member','config'));
     }
-
   
     public function attendance(Request $request){
-
         $input = $request->all();
         if($input['code'] ==  \App\Config::first()->session){
             $auth_id = Auth::guard('member')->user()->id;
