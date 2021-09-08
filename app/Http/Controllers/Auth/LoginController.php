@@ -53,7 +53,8 @@ class LoginController extends Controller
         ];
         if (\Auth::attempt($input, true)) {
             $user = Auth::user();
-            $success['token'] = $user->createToken('MyToken')->accessToken;
+            $user->api_token = $user->createToken('MyToken')->accessToken;
+            $user->save();
             return Redirect::route('admin.home');
         }
         return Redirect::route('login')->with('error', 'Tài khoản hoặc mật khẩu không đúng');
