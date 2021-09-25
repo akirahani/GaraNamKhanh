@@ -14,7 +14,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalCenterTitle" style="color:black">Thêm lịch</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -26,23 +26,23 @@
                                 <input style="background-color:#bbbb" type="hidden" name="id" id="id"   value="" class="form-control" disabled>
                                 </div>
                                 <div class="form-group">
-                                <label for="type_date" style="color:black">Type of Date</label>
-                                <select class="form-select" aria-label="Default select example" name="type_date" id="type_date"  >
+                                <label for="type_date" style="color:black">Kiểu ngày</label>
+                                <select class="form-select" style="background-color: #66aac3;;"  aria-label="Default select example" name="type_date" id="type_date"  >
                                    @foreach(App\Calendar::type_date as $val)
-                                        <option value="{{$val['id']}}">{{$val['name']}}</option>
+                                        <option style="background-color:white" value="{{$val['id']}}">{{$val['name']}}</option>
                                     @endforeach    
                                 </select>
                                 </div>
                                 <div class="form-group">
-                                        <label for="date" style="color:black" >Title</label>
-                                <input style="background-color:#bbbb" type="text" name="title" id="title"  value="" required="required"  class="form-control">
+                                        <label for="date" style="color:black" >Tiêu đề</label>
+                                <input style="background-color: #66aac3;;" type="text" name="title" id="title"  value=""  class="form-control" required >
                                 </div>
                                 <div class="form-group">
-                                        <label for="date" style="color:black" >Date</label>
-                                <input type="text" name="date" id="date" disabled value="" required="required"  class="form-control">
+                                        <label for="date" style="color:black" >Ngày</label>
+                                <input type="text" style="background-color: #66aac3;;" name="date" id="date" disabled value="" required="required"  class="form-control">
                                 </div>
                                 <div class="form-group">
-                                <button type="button" id="submit" class="btn btn-primary">Save</button>
+                                <button type="button" id="submit" class="btn btn-success">Thêm</button>
                                 </div>
                                 </form>
                         </div>
@@ -54,7 +54,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalCenterTitle" style="color:black">Cập nhật lịch</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -66,23 +66,23 @@
                                 <input style="background-color:#bbbb" hidden type="text" name="id" id="id2"   value="" class="form-control" disabled>
                                 </div>
                                 <div class="form-group">
-                                <label for="type_date" style="color:black">Type of Date</label>
-                                <select class="form-select" aria-label="Default select example"  name="type_date" id="type_date2"  >
+                                <label for="type_date" style="color:black">Kiểu ngày</label>
+                                <select class="form-select" style="background-color: #66aac3;" aria-label="Default select example"  name="type_date" id="type_date2"  >
                                    @foreach(App\Calendar::type_date as $val)
-                                        <option value="{{$val['id']}}">{{$val['name']}}</option>
+                                        <option style="background-color:white"  value="{{$val['id']}}">{{$val['name']}}</option>
                                     @endforeach    
                                 </select>
                                 </div>
                                 <div class="form-group">
-                                        <label for="date" style="color:black" >Title</label>
-                                <input style="background-color:#bbbb" type="text" name="title" id="title2"  value="" required="required"  class="form-control">
+                                        <label for="date" style="color:black" >Tiêu đề</label>
+                                <input style="background-color: #66aac3;; color:black" type="text" name="title" id="title2"  value=""  class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                        <label for="date" style="color:black" >Date</label>
-                                <input type="text" name="date" id="date2" disabled value="" required="required"  class="form-control">
+                                        <label for="date" style="color:black" >Ngày</label>
+                                <input type="text" style="background-color: #66aac3;;" name="date" id="date2" disabled value=""   class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                <button type="button" id="submit1" class="btn btn-primary">Update</button>
+                                <button type="button" id="submit1" class="btn btn-success">Cập nhật</button>
                                 </div>
                                 </form>
                         </div>
@@ -95,7 +95,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalCenterTitle" style="color:black">Chi tiết</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -107,20 +107,20 @@
                                         <input  id="id1"  hidden disabled>
                                 </div>
                                 <div class="form-group">
-                                        <label for="type_date" style="color:black">Type of Date</label>
+                                        <label for="type_date" style="color:black">Kiểu ngày</label>
                                         <input   id="type_date1" disabled>
                                 </div>
                                 <div class="form-group">
-                                        <label for="date" style="color:black" >Title</label>
-                                        <input s id="title1"  value=""  disabled >
+                                        <label for="date" style="color:black" >Tiêu đề</label>
+                                        <input   style=" color:black " id="title1"  value=""  disabled >
                                 </div>
                                 <div class="form-group">
-                                        <label for="date" style="color:black" >Date</label>
+                                        <label for="date" style="color:black" >Ngày</label>
                                         <input  id="date1" disabled >
                                 </div>
                                 <div class="form-group">
-                                        <button type="button" id="update_modal" class="btn btn-primary">Edit</button>
-                                        <button type="button" id="remove" class="btn btn-primary">Delete</button>
+                                        <button type="button" id="update_modal" class="btn btn-info">  <i class="fas fa-edit"></i></button>
+                                        <button type="button" id="remove" class="btn btn-danger">     <i class="fas fa-trash-alt"></i></button>
                                 </div>
                                 </form>
                         </div>

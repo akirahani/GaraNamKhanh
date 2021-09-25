@@ -31,6 +31,7 @@ class CarController extends Controller
     public function store(Request $request){
         $car = new Car;
         $input = $request->all();
+        // dd($input);
         $this->validate($request,[
             'license_plate'=>'required|unique:cars|min:8',
             'engine'=>'required|unique:cars|min:7',
@@ -38,24 +39,23 @@ class CarController extends Controller
             'name'=>'required',
             'color'=>'required',
             'year_manufacture'=>'required',
-            'run_distance'=>'required',
             'id_type'=>'required',
             'id_company'=>'required',
-            'customer_id'=>'required',
+       
         ]);
-  
-        $car->name = $input['name'];
-        $car->license_plate = $input['license_plate'];
-        $car->color= $input['color'];
-        $car->year_manufacture = $input['year_manufacture'];
-        $car->engine = $input['engine'];
-        $car->chassis = $input['chassis'];
-        $car->run_distance = $input['run_distance'];
-     
-        $car->id_company = $input['id_company'];
-        $car->id_type = $input['id_type'];
-        $car->customer_id = $input['customer_id'];
-        $car->save();
+        
+            $car->name = $input['name'];
+            $car->license_plate = $input['license_plate'];
+            $car->color= $input['color'];
+            $car->year_manufacture = $input['year_manufacture'];
+            $car->engine = $input['engine'];
+            $car->chassis = $input['chassis'];
+            if($input['check']){
+                $car->id_company = $input['id_company'];
+            }
+            $car->id_type = $input['id_type'];
+            $car->customer_id = $input['customer_id'];
+            $car->save();
         return redirect()->route('admin.car.index');
     }
     public function update(Request $request,Car $car){
@@ -67,7 +67,6 @@ class CarController extends Controller
             'name'=>'required',
             'color'=>'required',
             'year_manufacture'=>'required',
-            'run_distance'=>'required',
             'id_type'=>'required',
             'id_company'=>'required',
         ]);
@@ -79,7 +78,6 @@ class CarController extends Controller
         $year_manufacture = $input['year_manufacture'];
         // $engine = $input['engine'];
         // $chassis = $input['chassis'];
-        $run_distance = $input['run_distance'];
         $id_company = $input['id_company'];
         $id_type = $input['id_type'];
         $data = [
@@ -89,7 +87,7 @@ class CarController extends Controller
             'year_manufacture'=>$year_manufacture,
             // 'engine'=>$engine,
             // 'chassis'=> $chassis,
-            'run_distance'=>$run_distance,
+
             'id_company'=>$id_company,
             'id_type'=>$id_type
         ];

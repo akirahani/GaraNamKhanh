@@ -16,8 +16,8 @@ class RepairController extends Controller
         $repairs = PriceNotification::all();
         return view('backend.repair.index',compact('repairs'));
     }
-    public function insert($id){
-        $pnotis = PriceNotification::find($id);
+    public function insert(){
+        $pnotis = PriceNotification::all();
         $spares = SparePart::all();
         return view('backend.repair.insert',compact('pnotis','spares'));
     }

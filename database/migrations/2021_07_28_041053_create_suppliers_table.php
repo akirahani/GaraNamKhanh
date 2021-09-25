@@ -21,6 +21,8 @@ class CreateSuppliersTable extends Migration
             $table->string('email');
             $table->string('website');
             $table->string('tax_code');
+            $table->string('note');
+            $table->string('rating');
             $table->timestamps();
         });
     }

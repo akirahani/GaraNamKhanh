@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend\DetailWS;
 use App\Reference;
 use App\Supplier;
-use App\TypeSpare;
 use App\Work;
 use App\Customer;
 use App\SpareDetail;
@@ -26,7 +25,6 @@ class DetailWSController extends Controller
             $arr['price_reference'] = $input['price_reference'][$key];
             $arr['id_spare']= $input['id_spare'][$key];
             $arr['id_supplier']= $input['id_supplier'][$key];
-            $arr['id_type']= $input['id_type'][$key];
             $spare_detail = SpareDetail::create($arr);
 
         }

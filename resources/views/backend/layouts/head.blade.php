@@ -38,11 +38,7 @@
 
     <link rel="stylesheet prefetch" href="{{ asset('assets/css/bootstrap-datepicker.css') }}">
     <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="/DataTables-1.10.7/media/css/jquery.dataTables.css">
-
-    <!-- jQuery -->
-    <script type="text/javascript" charset="utf8" src="/DataTables-1.10.7/media/js/jquery.js"></script>
-
-    <!-- DataTables -->
-    <script type="text/javascript" charset="utf8" src="/DataTables-1.10.7/media/js/jquery.dataTables.js"></script>
+    <script src="{{asset('assets/js/jquery3.5.1.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('assets/css/dataTable.css') }}">
+    <script src="{{asset('assets/js/dataTables.min.js')}}"></script>
 </head>

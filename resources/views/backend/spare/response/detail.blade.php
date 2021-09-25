@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body"> 
-            <form action="{{url('/admin/spare/in/insert')}}" method="POST">
+            <form action="{{url('/admin/file/in/detail/')}}" method="POST">
             @csrf
                 <div class="row work_main mx-auto p-3">
                             <div class="col-3">
@@ -80,7 +80,7 @@
                                         @foreach($price_notis->spare as $spare)
                                             <tr>
                                                 <input value="{{$spare->id}}" name="id_spare[]" hidden>
-                                                <td style="border: 1px solid " >{{$spare->dspare->name_spare}}- {{$spare->dsupplier->name}}- {{$spare->dtype->serial}}-{{$spare->dtype->model}} </td>
+                                                <td style="border: 1px solid " >{{$spare->dspare->name_spare}}- {{$spare->dspare->serial}}-{{$spare->dspare->model}} - {{$spare->dsupplier->name}}</td>
       
                                                 <td style="border: 1px solid "><input name="amount[]" class="form-control" type="number" min="1" max="" value=""  required ></td>
       
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="col-12 p-3">
                                     @if(\App\PriceNotification::status_success['id'] == $price_notis->status)
-                                        <input class="btn btn-warning" id="submit" type="submit" value="Nhập" style="margin-left:90%;"  >
+                                        <input class="btn btn-warning" id="submit" type="submit" value="Tạo phiếu nhập" style="margin-left:90%;"  >
                                     @endif
                                 </div>
                              

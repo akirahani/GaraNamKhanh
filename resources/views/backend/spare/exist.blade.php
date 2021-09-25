@@ -19,7 +19,7 @@
                             @foreach($exists as $key => $item)
                                 <tr>
                                     <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $item->dspare->name_spare }}- {{ $item->dsupplier->name }}   {{ $item->dtype->serial }}-{{ $item->dtype->model }}   </td>
+                                    <td>{{ $item->dspare->name_spare }}- {{ $item->dsupplier->name }}   {{ $item->dspare->serial }}-{{ $item->dspare->model }}   </td>
                                     <td> {{ $item->dspare->unit}} </td>
                                     <td>{{ $item->amount}}</td>
                                 </tr>    

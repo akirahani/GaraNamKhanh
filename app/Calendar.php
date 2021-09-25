@@ -11,5 +11,5 @@ class Calendar extends Model
        'type_date'
        ,'date','title'
     ];
-    const type_date = [[ 'id'=>1, 'name'=>'day_off' ],['id'=>2, 'name'=>'holiday']];
+    const type_date = [[ 'id'=>1, 'name'=>'Ngày nghỉ' ],['id'=>2, 'name'=>'Ngày lễ']];
 }

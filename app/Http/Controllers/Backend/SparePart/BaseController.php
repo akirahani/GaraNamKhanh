@@ -17,11 +17,14 @@ class BaseController extends Controller
     }
     public function store(Request $request){
         $input = $request->all();
-        foreach($input['name_spare']  as $key=>$val){
-            $references['name_spare']= $input['name_spare'][$key];
-            $references['unit'] = $input['unit'][$key];
-            Reference::create($references);
-        }
+        $references['name_spare']= $input['name_spare'];
+        $references['unit'] = $input['unit'];
+        $references['serial'] = $input['serial'];
+        $references['model'] = $input['model'];
+        $references['price'] = $input['price'];
+        $references['rating'] = $input['rating'];
+        $references['note'] = $input['note'];
+        Reference::create($references);
         return redirect()->route('admin.spare.base');
     }
     public function edit($id){
@@ -32,9 +35,19 @@ class BaseController extends Controller
         $id= $request->id;
         $name_spare = $request->name_spare;
         $unit = $request->unit;
+        $serial = $request->serial;
+        $model = $request->model;
+        $price = $request->price;
+        $rating = $request->rating;
+        $note = $request->note;
         $data=[
             'name_spare'=>$name_spare,
-            'unit'=>$unit
+            'unit'=>$unit,
+            'serial'=>$serial ,
+            'model'=>$model,
+            'price'=>$price,
+            'rating'=>$rating,
+            'note'=>$note
         ];
         $references->where('id',$id)->update($data);
         return redirect()->route('admin.spare.base');

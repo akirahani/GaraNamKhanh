@@ -10,7 +10,7 @@
              
                 <h5 class="card-title"></h5>       
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="example">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -63,5 +63,15 @@
               });
           }
         });
-    </script>
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable( {
+                    "order": [[ 3, "desc" ]]
+                } );
+            } );
+        </script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
 @endsection

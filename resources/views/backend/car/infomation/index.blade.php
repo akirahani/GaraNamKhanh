@@ -10,7 +10,7 @@
              
                 <h5 class="card-title"></h5>       
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="example">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -18,8 +18,7 @@
                                 <th scope="col">Tên xe</th>
                                 <th scope="col">Số máy</th>
                                 <th scope="col">Số khung</th>              
-                                <th scope="col">Năm sản xuất</th>  
-                                <th scope="col">Quãng đường đã đi</th>       
+                                <th scope="col">Năm sản xuất</th>     
                                 <th scope="col">Công ty bảo hiểm</th>     
                                 <th scope="col">Loại xe</th>     
                                 <th scope="col">Chủ xe</th>  
@@ -36,7 +35,6 @@
                                     <td>{{ $item->engine }}</td>
                                     <td>{{ $item->chassis}}</td>
                                     <td>{{ $item->year_manufacture}}</td>
-                                    <td>{{ $item->run_distance}}</td>
                                     <td>{{ $item->company->name}}</td>
                                     <td>{{ $item->type_car->name_type}}- {{ $item->type_car->vehicles}}</td>
                                     <td>{{ $item->custom->name}}</td>
@@ -77,5 +75,12 @@
               });
           }
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 3, "desc" ]]
+            } );
+        } );
     </script>
 @endsection

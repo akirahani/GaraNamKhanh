@@ -9,31 +9,27 @@
                 <input name="id" value="{{$car->id}}" type="text" class="form-control form-control-rounded" id="input-6" hidden>
                 <div class="form-group">
                     <label for="input-6">Biển số xe</label>
-                    <input readonly value="{{$car->license_plate}}" type="text" class="form-control form-control-rounded" id="input-6">
+                    <input readonly value="{{$car->license_plate}}" type="text" class="form-control form-control-rounded" id="input-6" required>
                 </div>
                 <div class="form-group">
                     <label for="input-7">Tên xe</label>
-                    <input name="name" type="text" value="{{$car->name}}"  class="form-control form-control-rounded" id="input-7">
+                    <input name="name" type="text" value="{{$car->name}}"  class="form-control form-control-rounded" id="input-7" required>
                 </div>
                 <div class="form-group">
                     <label for="input-7">Màu sắc</label>
-                    <input name="color" type="text" value="{{$car->color}}"  class="form-control form-control-rounded" id="input-7">
+                    <input name="color" type="text" value="{{$car->color}}"  class="form-control form-control-rounded" id="input-7" required>
                 </div>
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <label for="input-9">Số máy</label>
-                    <input name="engine" type="text" value="{{$car->engine}}"  class="form-control form-control-rounded" id="input-9">
+                    <input name="engine" type="text" value="{{$car->engine}}"  class="form-control form-control-rounded" id="input-9" required>
                 </div>
                 <div class="form-group">
                     <label for="input-7">Số khung</label>
-                    <input name="chassis" type="text" value="{{$car->chassis}}" class="form-control form-control-rounded" id="input-7">
-                </div> -->
-                <div class="form-group">
-                    <label for="input-7">Quãng đường đã đi</label>
-                    <input name="run_distance" type="text" value="{{$car->run_distance}}" class="form-control form-control-rounded" id="input-7">
+                    <input name="chassis" type="text" value="{{$car->chassis}}" class="form-control form-control-rounded" id="input-7" required>
                 </div>
                 <div class="form-group">
                     <label for="input-7">Năm sản xuất</label>
-                    <input name="year_manufacture" type="text" value="{{$car->year_manufacture}}"  class="form-control form-control-rounded" id="input-7">
+                    <input name="year_manufacture" type="text" value="{{$car->year_manufacture}}"  class="form-control form-control-rounded" id="input-7" required>
                 </div>
                 <div class="form-group">
                     <label for="input-7">Công ty bảo hiểm</label>
@@ -54,7 +50,7 @@
             
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-light btn-round px-5"></i>
+                    <button type="submit" class="btn btn-success btn-round mt-3"></i>
                         Cập nhật</button>
                 </div>
             </form>

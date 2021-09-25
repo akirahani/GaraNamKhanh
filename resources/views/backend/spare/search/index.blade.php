@@ -14,7 +14,6 @@
                             <tr>
                                 <th scope="col">Tên phụ tùng</th>
                                 <th scope="col">Nhà cung cấp TK</th>
-                                <th scope="col">Chủng loại</th>
                                 <th scope="col">Giá tham khảo</th>
                                 <th scope="col">Tác vụ</th>
                             </tr>
@@ -25,7 +24,7 @@
                                     <td scope="col">
                                         <select class="form-select" name="id_spare[]">
                                             @foreach($references as $reference)
-                                                <option style="background-color: #fff; " >{{$reference->id}}- {{$reference->name_spare}}</option>
+                                                <option style="background-color: #fff; " >{{$reference->id}}- {{$reference->name_spare}}- {{$reference->serial}}- {{$reference->model}}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -33,13 +32,6 @@
                                         <select class="form-select" name="id_supplier[]">
                                             @foreach($suppliers as $supplier)
                                                 <option style="background-color: #fff; " >{{$supplier->id}}- {{$supplier->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td scope="col">
-                                        <select class="form-select" name="id_type[]">
-                                            @foreach($types as $type)
-                                                <option style="background-color: #fff; " >{{$type->id}}- {{$type->serial}} - {{$type->model}} </option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -65,7 +57,7 @@
                                 '<td scope="col">'+
                                     '<select class="form-select" name="id_spare[]" >'+
                                         '@foreach($references as $reference)'+
-                                            '<option style="background-color: #fff; " >{{$reference->id}}- {{$reference->name_spare}}</option>'+
+                                            '<option style="background-color: #fff; " >{{$reference->id}}- {{$reference->name_spare}}- {{$reference->serial}}- {{$reference->model}}</option>'+
                                         '@endforeach'+
                                     '</select>'+
                                 '</td>'+
@@ -73,13 +65,6 @@
                                     '<select class="form-select" name="id_supplier[]" >'+
                                         '@foreach($suppliers as $supplier)'+
                                             '<option style="background-color: #fff; " >{{$supplier->id}}- {{$supplier->name}}</option>'+
-                                        '@endforeach'+
-                                    '</select>'+
-                                '</td>'+
-                                '<td scope="col">'+
-                                    '<select class="form-select" name="id_type[]" >'+
-                                        '@foreach($types as $type)'+
-                                            '<option style="background-color: #fff; " >{{$type->id}}- {{$type->serial}} - {{$type->model}}</option>'+
                                         '@endforeach'+
                                     '</select>'+
                                 '</td>'+

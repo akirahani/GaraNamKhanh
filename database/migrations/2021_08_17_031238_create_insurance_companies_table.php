@@ -20,6 +20,9 @@ class CreateInsuranceCompaniesTable extends Migration
             $table->string('address');
             $table->string('website');
             $table->string('email');
+            $table->string('tax_code');
+            $table->string('note');
+            $table->string('rating');
             $table->timestamps();
         });
     }

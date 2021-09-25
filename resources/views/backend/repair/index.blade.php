@@ -4,7 +4,9 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-          
+            <a class="btn btn-success" href="{{ route('admin.repair.insert') }}">
+                    <i class="fas fa-plus"></i>
+                </a>
                 <h5 class="card-title"></h5>       
                 <div class="table-responsive">
                     <table class="table">

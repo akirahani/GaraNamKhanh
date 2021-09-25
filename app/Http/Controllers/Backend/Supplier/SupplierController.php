@@ -23,6 +23,8 @@ class SupplierController extends Controller
             $supplier['email'] = $input['email'][$key];
             $supplier['website'] = $input['website'][$key];
             $supplier['tax_code'] = $input['tax_code'][$key];
+            $supplier['note'] = $input['note'][$key];
+            $supplier['rating'] = $input['rating'][$key];
             Supplier::create($supplier);
         }
         return redirect()->route('backend.supplier.view');
@@ -40,13 +42,17 @@ class SupplierController extends Controller
         $email =$request->input('email');
         $website =$request->input('website');
         $tax_code = $request->input('tax_code');
+        $note = $request->input('note');
+        $rating = $request->input('rating');
         $data = array(
             'name' => $name,
             'address' => $address,
             'phone'=>$phone,
             'email'=>$email,
             'website'=>$website,
-            'tax_code'=>$tax_code
+            'tax_code'=>$tax_code,
+            'note'=>$note,
+            'rating'=>$rating,
         );
        $supplier->where('id',$id)->update($data); 
         return redirect()->route('backend.supplier.view');

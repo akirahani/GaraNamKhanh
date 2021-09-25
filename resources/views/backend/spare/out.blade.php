@@ -11,15 +11,12 @@
                         <h3>Lịch sử xuất tùng</h3>
                     </div>
                     <div class="col-5">
-                    <form class="search-bar">
-                        <input type="text" placeholder="Tìm kiếm lịch sử xuất" style="color: white">
-                        <a href="javascript:void();"><i class="icon-magnifier"></i></a>
-                    </form>
+                
                     </div>
                 </div>   
                 <br>      
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="example">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -29,19 +26,19 @@
                                 <th scope="col">Giá xuất</th> 
                       
                                 <th scope="col">Thời gian</th>
-                                <th scope="col">Lệnh sửa</th>
+                                <th scope="col">Phiếu xuất</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($spare as $key => $item)
                             <tr id="spare-{{$item->id}}">
                                 <td scope="row">{{ $key+1 }}</td>
-                                <td>{{ $item->dout->dspare->name_spare }}- {{ $item->dout->dsupplier->name }}- {{ $item->dout->dtype->serial }}-{{ $item->dout->dtype->model }}</td>
+                                <td>{{ $item->dout->dspare->name_spare }}- {{ $item->dout->dsupplier->name }}- {{ $item->dout->dspare->serial }}-{{ $item->dout->dspare->model }}</td>
                                 <td>{{ $item->dout->dspare->unit }}</td>
                                 <td>{{ $item->amount_out }}</td>
                                 <td>{{ $item->unit_price }}</td>
-                                <td>{{$item->outs->created_at}}</td>
-                                <td>{{ $item->id_notification }}</td>
+                                <td>{{$item->created_at}}</td>
+                                <td>{{$item->file_out->id}}</td>
                             </tr>    
                             @endforeach 
                         </tbody>
@@ -70,5 +67,12 @@
               });
           }
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 3, "desc" ]]
+            } );
+        } );
     </script>
 @endsection

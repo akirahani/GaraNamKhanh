@@ -8,17 +8,17 @@
                 </h2>
             </b>
         </div>
-     @foreach($pnotis->customer->car as $car)
+
         <form action="{{ route('admin.repair.store') }}" method="POST">
         @csrf
-        <input class="form-control" name="id_notification" value="{{$pnotis->id}}" hidden>
+        <input class="form-control" name="id_notification" value="" hidden>
             <div class="row repair_insert_main ">
                     <div class="col-6">
                         <div class= "label-input">
                             <label >Họ & Tên<label>
                         </div>
                          <div class="insert information">
-                            <input  class="form-control" name="name" value="{{$pnotis->customer->name}}" >
+                            <input  class="form-control" name="name"   required>
                          </div>   
                     </div>
                     <div class="col-6">
@@ -26,7 +26,7 @@
                             <label >Biển số xe<label>
                         </div>
                         <div class="insert information">
-                            <input  class="form-control" name="license_plate" value="{{$car->license_plate}}">
+                            <input  class="form-control" name="license_plate"  required>
                         </div>   
                     </div>
                     <div class="col-6">
@@ -34,7 +34,7 @@
                             <label >Địa chỉ<label>
                         </div>
                         <div class="insert information">
-                            <input  class="form-control" name="address"  value="{{$pnotis->customer->address}}">
+                            <input  class="form-control" name="address"  required>
                         </div>    
                     </div>
                     <div class="col-6">
@@ -42,7 +42,7 @@
                             <label >Loại xe<label>
                         </div>        
                         <div class="insert information">
-                            <input  class="form-control" name="car_type" value="{{$car->type_car->vehicles}}- {{ $car->type_car->name_type}}">
+                            <input  class="form-control" name="car_type"  required>
                         </div>              
                     </div>
                     <div class="col-6">
@@ -50,7 +50,7 @@
                             <label >Số điện thoại<label>
                         </div>  
                         <div class="insert information">
-                            <input  class="form-control" name="phone" value="{{$pnotis->customer->phone}}">
+                            <input  class="form-control" name="phone"  required>
                         </div>    
                     </div>
                     <div class="col-6">
@@ -58,7 +58,7 @@
                             <label >Năm sản xuất<label>
                         </div>  
                         <div class="insert information">
-                            <input   class="form-control" name="year_manufacture" value="{{$car->year_manufacture}}">
+                            <input   class="form-control" name="year_manufacture"  required>
                         </div>    
 
                     </div>
@@ -67,7 +67,7 @@
                             <label >Công ty bảo hiểm<label>
                         </div>  
                         <div class="insert information">
-                            <input  class="form-control" name="insurance_company" value="{{$car->company->name}}">
+                            <input  class="form-control" name="insurance_company"  required>
                         </div>    
                     </div>
                     <div class="col-6">
@@ -75,7 +75,7 @@
                             <label >Người giám định<label>
                         </div>  
                         <div class="insert information">
-                            <input  class="form-control" name="assessor" value="{{$pnotis->customer->assessor}}" required>
+                            <input  class="form-control" name="assessor"  required>
                         </div>    
                     </div>
             </div>
@@ -92,14 +92,13 @@
                                             <th style="border: 1px solid " >Tiền công</th>
                                         </tr>
                                 
-                                         
-                                        @foreach($pnotis->work as $work)
+                                  
                                                 <tr>
     
-                                                    <td style="border: 1px solid " >{{$work->name_work}} </td>
-                                                    <td style="border: 1px solid " ><input class="form-control"  name="wage[]" value="{{$work->wage}}" readonly></td>
+                                                    <td style="border: 1px solid " ></td>
+                                                    <td style="border: 1px solid " ><input class="form-control"  name="wage[]" value="" readonly></td>
                                                 </tr>
-                                            @endforeach
+                              
                                     </table>
                                 </div>
                             </div>
@@ -117,18 +116,18 @@
                                             <!-- <th scope="col" style="border: 1px solid " >Thành tiền</th> -->
                                         </tr>
                                   
-                                        @foreach($pnotis->in as $in)
+       
                                         <tr>
-                                            <input value="{{$in->details->id}}" name="id_spare[]" hidden>
-                                            <td style="border: 1px solid "  >{{$in->details->dspare->name_spare}}- {{$in->details->dsupplier->name}}- {{$in->details->dtype->serial}}-{{$in->details->dtype->model}} </td>
+                                            <input value="" name="id_spare[]" hidden>
+                                            <td style="border: 1px solid "  > </td>
                                         
-                                            <td style="border: 1px solid " ><input name="amount_out[]" class="form-control" type="number" min="1" max="{{$in->amount_in}}" value="{{$in->amount_in}}"  required ></td>
+                                            <td style="border: 1px solid " ><input name="amount_out[]" class="form-control" type="number" min="1" max="" value=""  required ></td>
                                             
-                                            <td style="border: 1px solid " ><input name="price_out[]" class="form-control" type="number"  max="{{$in->details->price_reference}}" value="{{$in->details->price_reference}}"  ></td>
+                                            <td style="border: 1px solid " ><input name="price_out[]" class="form-control" type="number"  max="" value=""  ></td>
                                             
                                             <!-- <td style="border: 1px solid " ></td>         -->
                                         </tr>     
-                                        @endforeach                  
+                                                 
                                    
                                     </table>    
                                     </div>
@@ -137,7 +136,7 @@
             <hr>
             <input type="submit" class="btn btn-success" value="Tạo lệnh sửa">
         </form>
-        @endforeach
+    
     </div>
 
 @endsection

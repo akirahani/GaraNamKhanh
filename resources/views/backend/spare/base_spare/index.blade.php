@@ -8,13 +8,18 @@
                         <i class="fas fa-plus"></i>
                 </a>
                 <h5 class="card-title"></h5>       
-                <div class="table-responsive">
-                    <table class="table">
+                <div class="table-responsive" >
+                    <table class="table" id="example">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Tên phụ tùng</th>
                                 <th scope="col">Đơn vị tính</th>
+                                <th scope="col">Serial</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Giá</th>
+                                <th scope="col">Ghi chú</th>
+                                <th scope="col">Đánh giá</th>
                                 <th scope="col">Tác vụ</th>
                             </tr>
                         </thead>
@@ -24,6 +29,15 @@
                                     <td scope="row">{{$key+1 }}</td>
                                     <td>{{ $item->name_spare }}</td>
                                     <td>{{ $item->unit }}</td>
+                                    <td>{{ $item->serial }}</td>
+                                    <td>{{ $item->model }}</td>
+                                    <td>{{ $item->price }}</td>
+                                    <td>{{ $item->note }}</td>
+                                    @foreach(\App\Reference::rating as $val)
+                                        @if($item->rating == $val['id'])
+                                            <td>{{ $val['name'] }}</td>
+                                        @endif
+                                    @endforeach
                                     <td>
                                         <a class="btn btn-info"href="{{url('/admin/spare/base/edit',$item->id)}}">
                                             <i class="fas fa-pen" style="font-size:15px"></i>
@@ -60,5 +74,12 @@
               });
           }
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 3, "desc" ]]
+            } );
+        } );
     </script>
 @endsection

@@ -16,55 +16,56 @@
         <h3  style="color:black;padding-top:3%" >Phiếu nhập</h3>
     </div>
     <div class="col-lg-12">
+    <form action="{{url('/admin/file/in/import')}}" method="POST" >
+    @csrf
         <div class="card">
-            <div class="card-body container"> 
-                <div class="row work_main mx-auto p-3">
-                        @foreach($pns->customer->car as $car)
-                            <div class="col-3">
-                                <div class="label-input">
-                                    <label style="color:black " for="input-2">Nhập cho xe</label>
-                                </div>    
-                                <div class="insert information">
-                                    <input style="color:black" name="" type="text" readonly value="{{$car->license_plate}}" class="form-control form-control-rounded" id="input-2">
-                                </div>   
-                            </div>
-                        @endforeach
-                            <div class="col-3">
-                                <div class="label-input">
-                                    <label style="color:black "  for="input-2">Thời gian nhập</label>
-                                </div>    
-                                <div class="insert information">
-                                    <input style="color:black" name="" type="text" readonly  value="{{$pns->created_at}}" class="form-control form-control-rounded" id="input-2">
-                                </div>   
-                            </div>
+        <div class="card-body container"> 
+                <input name="id_filein" value="{{$file_in->id}}" class="form-control" required hidden>
+                <div class="row work_main mx-auto p-3">           
                 </div>   
                     <table class="table">
                         <thead>
                             <tr>
                                 <th  style="border: 1px solid ;color:black" >Nội dung</th>
-                                <th  style="border: 1px solid;color:black " >Đơn vị tính</th>
-                                <th  style="border: 1px solid ;color:black" >Số lượng nhập</th> 
+                                <th  style="border: 1px solid;color:black " >Đơn vị tính</th>                       
                                 <th  style="border: 1px solid;color:black " >Giá nhập</th> 
-                                <th  style="border: 1px solid ;color:black" >Thành tiền</th> 
+                                <th  style="border: 1px solid ;color:black" >Số lượng nhập</th> 
+                                <!-- <th  style="border: 1px solid ;color:black" >Thành tiền</th>  -->
                             </tr>
                         </thead>  
-                     @foreach($pns->in as $in)  
                         <tbody>
-                            <tr>
-                                <td  style="border: 1px solid;color:black " >{{$in->details->dspare->name_spare}}- {{$in->details->dsupplier->name}}- {{$in->details->dtype->serial}}-{{$in->details->dtype->model}}</td>
-                                <td  style="border: 1px solid;color:black " >{{$in->details->dspare->unit}}</td>
-                                <td  style="border: 1px solid;color:black " >{{$in->amount_in}}</td> 
-                                <td  style="border: 1px solid;color:black " >{{$in->price_in}}</td>
-                                <td  style="border: 1px solid;color:black " >{{$in->all_in}}</td>
-                            </tr>
-                    
+                            @foreach($file_in->fin_spare as $val)
+                   
+                                <tr>
+                                    <td  style="border: 1px solid;color:black " >
+                                        <input name="id_sparein[]" class="form-control" value="{{$val->id}}" hidden>
+                                        {{$val->dspare->name_spare}}- {{$val->dsupplier->name}}- {{$val->dspare->serial}}- {{$val->dspare->model}}   
+                                    </td>
+                                
+                                    <td  style="border: 1px solid;color:black " >{{$val->dspare->unit}}</td>
+                                    <td  style="border: 1px solid;color:black " >
+                                        <input name="price_in[]" value="{{$val->dspare->price}}" class="form-control" required readonly>
+                                    </td>
+                                    <td  style="border: 1px solid;color:black " >
+                                    @if($file_in->status == \App\FileIn::wait['id'])
+                                        <input name="amount_in[]" class="form-control" required>
+                                    @endif
+                                    </td>
+                                 
+                                </tr>
+                         
+                            @endforeach
                         </tbody>
-                        @endforeach
-                    </table>    
+                    </table>      
                 </div>
-                <button class="btn btn-info" style="margin-left:90%"onclick="window.print()"><i class="fas fa-print" style="font-size:25px"></i></button>  
+                <!-- <button class="btn btn-info" style="margin-left:90%"onclick="window.print()"><i class="fas fa-print" style="font-size:25px"></i></button>   -->
             </div>
-        </div>
+            <div class="tab" style="margin-left:90%">
+                @if($file_in->status == \App\FileIn::wait['id'])
+                <button class="btn btn-warning" type="submit" >  <i class="fas fa-file-import"  style="font-size:25px"></i></button>
+                @endif
+            </div>
+        </form> 
+    </div>
  
 </div>
-      

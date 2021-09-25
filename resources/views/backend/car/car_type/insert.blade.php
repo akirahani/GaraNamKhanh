@@ -8,22 +8,22 @@
                 @csrf
                 <div class="form-add">
                     <div class="type_car row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-5">
                             <label for="input-6">Tên loại xe</label>
-                            <input name="name_type[]" type="text" class="form-control form-control-rounded" id="input-6">
+                            <input name="name_type[]" type="text" class="form-control form-control-rounded" id="input-6" required>
                         </div>
                         <div class="form-group col-5">
                             <label for="input-7">Dòng xe</label>
-                            <input name="vehicles[]" type="text" class="form-control form-control-rounded" id="input-7">
+                            <input name="vehicles[]" type="text" class="form-control form-control-rounded" id="input-7" required>
                         </div>
-                        <div class="form-group col-1" style="margin-top: 30px;">
+                        <div class="form-group col-2" style="margin-top: 30px;">
                             <a class="btn-add0" href="javascript:void(0)" style="font-size: 30px"><i class="fas fa-plus-circle"></i></a>
                         </div>
               
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-light btn-round px-5"></i>
+                    <button type="submit" class="btn btn-success btn-round px-5"></i>
                         Thêm</button>
                 </div>        
             </form>
@@ -33,15 +33,15 @@
 <script>
         $('.btn-add0').click(function(){
                 $(".form-add").append( '<div class="type_car row">'+
-                        '<div class="form-group col-6">'+
+                        '<div class="form-group col-5">'+
                             '<label for="input-6">Tên loại xe</label>'+
-                            '<input name="name_type[]" type="text" class="form-control form-control-rounded" id="input-6">'+
+                            '<input name="name_type[]" type="text" class="form-control form-control-rounded" id="input-6" required>'+
                         '</div>'+
                         '<div class="form-group col-5">'+
                             '<label for="input-7">Dòng xe</label>'+
-                            '<input name="vehicles[]" type="text" class="form-control form-control-rounded" id="input-7">'+
+                            '<input name="vehicles[]" type="text" class="form-control form-control-rounded" id="input-7" required>'+
                         '</div>'+
-                        '<div class="form-group col-1" style="margin-top: 30px;">'+
+                        '<div class="form-group col-2" style="margin-top: 30px;">'+
                             '<a class="btn-remove" href="javascript:void(0)" style="font-size: 30px"><i class="fas fa-minus-circle"></i></a>'+
                         '</div>'+
                     '</div>');

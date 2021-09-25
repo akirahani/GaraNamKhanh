@@ -37,7 +37,7 @@
                             @foreach($works as $key => $items)
                                 <tr id="work-{{$items->id}}">
                                     <td >
-                                        <input class="form-check-input" type="checkbox"   name="checktrue[]" id="flexCheckDefault" value="{{$items->id}}">
+                                        <input class="form-check-input" type="checkbox"   name="checktrue[]" id="flexCheckDefault" value="{{$items->id}}" >
                                     </td>
                                     
                                     <td>{{ $items->name_work}}</td>
@@ -74,10 +74,10 @@
                             @foreach($sdetail as $item)
                                 <tr id="detailws-{{$item->id}}">
                                     <td >
-                                        <input class="form-check-input" type="checkbox"   name="checktrue1[]" id="flexCheckDefault" value="{{$item->id}}">
+                                        <input class="form-check-input" type="checkbox"   name="checktrue1[]" id="flexCheckDefault" value="{{$item->id}}" >
                                     </td>
                           
-                                        <td>{{$item->dspare->name_spare}} {{$item->dsupplier->name}} {{$item->dtype->serial}} {{$item->dtype->model}}</td>  
+                                        <td>{{$item->dspare->name_spare}}- {{$item->dspare->serial}}- {{$item->dspare->model}}- {{$item->dsupplier->name}}</td>  
                           
                                     <td>{{$item->price_reference}}</td>
                                     <!-- <td><input name="amount[]" class="form-control" type="number" min="1" max="10" ></td> -->

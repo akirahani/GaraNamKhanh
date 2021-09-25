@@ -53,7 +53,7 @@ use Illuminate\Support\Facades\Route;
 
     //Repair
     Route::get('/admin/repair','Backend\Customer\RepairController@index')->name('admin.repair');
-    Route::get('/admin/repair/insert/{id}','Backend\Customer\RepairController@insert')->name('admin.repair.insert');
+    Route::get('/admin/repair/insert','Backend\Customer\RepairController@insert')->name('admin.repair.insert');
     Route::post('/admin/repair/store','Backend\Customer\RepairController@store')->name('admin.repair.store');
     Route::get('/admin/repair/detail/{id}','Backend\Customer\RepairController@detail')->name('admin.repair.detail');
     //Schedule
@@ -68,13 +68,6 @@ use Illuminate\Support\Facades\Route;
       Route::get('/admin/supplier/edit/{id}','Backend\Supplier\SupplierController@edit')->name('backend.supplier.edit');
       Route::post('/admin/supplier/update','Backend\Supplier\SupplierController@update')->name('backend.supplier.update');
       Route::get('/admin/supplier/delete/{id}' ,'Backend\Supplier\SupplierController@delete')->name('backend.supplier.delete');
-      //type_spare
-      Route::get('/admin/spare/type','Backend\SparePart\SpareTypeController@index')->name('backend.spare.type.index');
-      Route::get('/admin/spare/type/insert','Backend\SparePart\SpareTypeController@insert')->name('backend.spare.type.insert');
-      Route::post('/admin/spare/type/store','Backend\SparePart\SpareTypeController@store')->name('backend.spare.type.store');
-      Route::get('/admin/spare/type/edit/{id}','Backend\SparePart\SpareTypeController@edit')->name('backend.spare.type.edit');
-      Route::post('/admin/spare/type/update','Backend\SparePart\SpareTypeController@update')->name('backend.spare.type.update');
-      Route::get('/admin/spare/type/delete/{id}','Backend\SparePart\SpareTypeController@delete')->name('backend.spare.search.delete');
       //type_search 
       Route::get('/admin/spare/search/index','Backend\SparePart\SpareSearchController@index')->name('backend.spare.search.index');
       Route::get('/admin/spare/search/insert','Backend\SparePart\SpareSearchController@insert')->name('backend.spare.search.insert');
@@ -133,10 +126,18 @@ use Illuminate\Support\Facades\Route;
       Route::get('/admin/car/type/delete/{id}','Backend\Car\TypeCarController@delete')->name('admin.car.type.delele');
       //search_in
       Route::get('/admin/in/search','Backend\SparePart\SpareInController@search')->name('admin.in.search');
-      //file
+      //file_in
       Route::get('/admin/file/in','Backend\File\FileInController@index')->name('admin.file.in');
       Route::get('/admin/file/in/detail/{id}','Backend\File\FileInController@detail')->name('admin.file.in.detail');
-
+      Route::get('/admin/file/in/create','Backend\File\FileInController@create')->name('admin.file.in.create');
+      Route::post('/admin/file/in/insert','Backend\File\FileInController@insert')->name('admin.file.in.insert');
+      Route::get('/admin/file/in/delete/{id}','Backend\File\FileInController@delete')->name('admin.file.in.delete');
+      Route::post('/admin/file/in/import','Backend\File\FileInController@import')->name('admin.file.in.import');
+      //file_out
       Route::get('/admin/file/out','Backend\File\FileOutController@index')->name('admin.file.out');
       Route::get('/admin/file/out/detail/{id}','Backend\File\FileOutController@detail')->name('admin.file.out.detail');
+      Route::get('/admin/file/out/create','Backend\File\FileOutController@create')->name('admin.file.out.create');
+      Route::post('/admin/file/out/insert','Backend\File\FileOutController@insert')->name('admin.file.out.insert');
+      Route::post('/admin/file/out/export','Backend\File\FileOutController@export')->name('admin.file.out.export');
+      Route::get('/admin/file/out/delete/{id}','Backend\File\FileOutController@delete')->name('admin.file.out.delete');
     });

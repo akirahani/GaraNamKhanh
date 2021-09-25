@@ -15,6 +15,8 @@
     <div style="text-align:center">
         <h3  style="color:black;padding-top:3%" >Phiếu xuất</h3>
     </div>
+    <form action="{{url('/admin/file/out/export')}}" method="POST">
+        @csrf
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body container"> 
@@ -25,19 +27,24 @@
                                     <label for="input-2">Tên khách hàng</label>
                                 </div>    
                                 <div class="insert information">
+                                    <input name="id_customer" type="text" readonly value="{{$pns->customer->id}}" class="form-control form-control-rounded" hidden id="input-2">
                                     <input name="" type="text" readonly value="{{$pns->customer->name}}" class="form-control form-control-rounded" id="input-2">
                                 </div>   
                             </div>
-                            @foreach($pns->customer->car as $car)
+                    
                             <div class="col-3">
                                 <div class="label-input">
                                     <label for="input-2">Biển số xe</label>
                                 </div>    
                                 <div class="insert information">
-                                    <input name="" type="text" readonly value="{{$car->license_plate}}" class="form-control form-control-rounded" id="input-2">
-                                </div>   
+                                    <select class="form-select"   aria-label="Default select example" name="car"  >
+                                        @foreach($pns->customer->car as $car)
+                                                <option style="background-color:white" >{{$car->license_plate}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                            @endforeach
+                        
                             <div class="col-3">
                                 <div class="label-input">
                                     <label for="input-2">Địa chỉ</label>
@@ -60,28 +67,46 @@
                             <tr>
                                 <th  style="border: 1px solid ;color:black" >Nội dung</th>
                                 <th  style="border: 1px solid;color:black " >Đơn vị tính</th>
-                                <th  style="border: 1px solid ;color:black" >Số lượng xuất</th> 
                                 <th  style="border: 1px solid;color:black " >Giá xuất</th> 
-                                <th  style="border: 1px solid ;color:black" >Thành tiền</th> 
+                                <th  style="border: 1px solid ;color:black" >Số lượng xuất</th> 
+                              
+                                <!-- <th  style="border: 1px solid ;color:black" >Thành tiền</th>  -->
                             </tr>
                         </thead>  
-                     @foreach($pns->out as $out)  
+                     @foreach($pns->fout_spare as $out) 
+                   
                         <tbody>
                             <tr>
-                                <td  style="border: 1px solid;color:black " >{{$out->dout->dspare->name_spare}}- {{$out->dout->dsupplier->name}}- {{$out->dout->dtype->serial}}-{{$out->dout->dtype->model}}</td>
-                                <td  style="border: 1px solid;color:black " >{{$out->dout->dspare->unit}}</td>
-                                <td  style="border: 1px solid;color:black " >{{$out->amount_out}}</td> 
-                                <td  style="border: 1px solid;color:black " >{{$out->unit_price}}</td>
-                                <td  style="border: 1px solid;color:black " >{{$out->total_price}}</td>
+                                <td  style="border: 1px solid;color:black " ><input value="{{$out->id}}- {{$out->dspare->name_spare}}- {{$out->dsupplier->name}}- {{$out->dspare->serial}}-{{$out->dspare->model}}" readonly class="form-control" name="id_spare[]"></td>
+                                <td  style="border: 1px solid;color:black " >{{$out->dspare->unit}}</td>
+                                <td  style="border: 1px solid;color:black " >
+                                    <input name="price_out[]" value="{{$out->price_reference}}" class="form-control" required readonly>
+                                </td>
+                                <td  style="border: 1px solid;color:black " >
+                                    @if($pns->status == \App\FileOut::wait['id'])
+                            
+                                        <input name="amount_out[]" type="number" class="form-control" value="{{$out->amount}}" max="{{$out->amount}}" required>
+                                  
+                                    @endif
+                                </td>
+                                <!-- <td  style="border: 1px solid;color:black " >{{$out->total_price}}</td> -->
                             </tr>
                     
                         </tbody>
+                      
                         @endforeach
                     </table>    
                 </div>
-                <button class="btn btn-info" style="margin-left:90%"onclick="window.print()"><i class="fas fa-print" style="font-size:25px"></i></button>  
+                <!-- <button class="btn btn-info" style="margin-left:90%"onclick="window.print()"><i class="fas fa-print" style="font-size:25px"></i></button>
+               -->
+               <div class="tab" style="margin-left:90%">
+                @if($pns->status == \App\FileOut::wait['id'])
+                <button class="btn btn-warning" type="submit" >  <i class="fas fa-file-export"  style="font-size:25px"></i></button>
+                @endif
+            </div>
             </div>
         </div>
+    </form>
      
 </div>
       

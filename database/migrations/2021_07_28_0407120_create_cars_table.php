@@ -21,7 +21,6 @@ class CreateCarsTable extends Migration
             $table->string('chassis');
             $table->string('color');    
             $table->year('year_manufacture');
-            $table->bigInteger('run_distance');
             $table->bigInteger('id_company');
             $table->bigInteger('id_type');
             $table->timestamps();

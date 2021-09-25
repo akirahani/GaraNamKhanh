@@ -39,7 +39,7 @@ class SpareInController extends Controller
                      $spare_detail->where('id',$id)->update($arr);
                  
              }     
-             return redirect()->route('admin.repair.insert',$id_pn);
+             return redirect()->route('admin.sparein.index',$id_pn);
   
     
     }

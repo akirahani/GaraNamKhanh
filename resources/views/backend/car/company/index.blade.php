@@ -10,7 +10,7 @@
              
                 <h5 class="card-title"></h5>       
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="example">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -18,7 +18,10 @@
                                 <th scope="col">Địa chỉ</th>
                                 <th scope="col">Số điện thoại</th>       
                                 <th scope="col">Website</th>
-                                <th scope="col">Email</th>       
+                                <th scope="col">Email</th> 
+                                <th scope="col">Mã số thuế</th>   
+                                <th scope="col">Đánh giá</th>   
+                                <th scope="col">Ghi chú</th>         
                                 <th scope="col">Tác vụ</th>    
                             </tr>
                         </thead>
@@ -32,6 +35,14 @@
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->website }}</td>
                                     <td>{{ $item->email }}</td>
+                                    <td>{{ $item->tax_code}}</td>
+                                    @foreach(\App\InsuranceCompany::rating as $val)
+                                        @if($item->rating == $val['id'])
+                                            <td>{{ $val['name']}}</td>
+                                        @endif
+                                    @endforeach
+                            
+                                    <td>{{ $item->note }}</td>
                                     <td>
                                         
                                         <a class="btn btn-info"href="{{url('/admin/car/company/edit',$item->id)}}">
@@ -71,5 +82,12 @@
               });
           }
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 3, "desc" ]]
+            } );
+        } );
     </script>
 @endsection

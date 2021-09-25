@@ -11,7 +11,7 @@
              
                 <h5 class="card-title"></h5>       
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="example">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -19,6 +19,11 @@
                                 <th scope="col">Tài khoản</th>
                                 <th scope="col">Địa chỉ</th>
                                 <th scope="col">Số điện thoại</th>     
+                                <th scope="col">Đối tượng khách hàng</th>     
+                                <th scope="col">Ản đại diện</th>     
+                                <th scope="col">Ngày sinh</th>     
+                                <th scope="col">Thông tin doanh nghiệp</th>     
+                                <th scope="col">Thông tin liên quan</th>     
                                 <th scope="col">Tác vụ</th>           
                             </tr>
                         </thead>
@@ -31,6 +36,15 @@
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->address }}</td>
                                     <td>{{ $item->phone }}</td>
+                                    @foreach(\App\Customer::segment as $val)
+                                        @if($item->segment == $val['id'])
+                                            <td>{{ $val['name']}}</td>
+                                        @endif
+                                    @endforeach
+                                    <td><img src="{{ url('/') }}/assets/images/customer/{{$item->avatar}}" alt="1" width="100%"></td>
+                                    <td>{{ $item->birthday }}</td>
+                                    <td>{{ $item->business_infomation }}</td>
+                                    <td>{{ $item->related_infomation }}</td>
                                     <td>
                                         
                                         <a class="btn btn-info"href="{{ route('backend.customer.edit',$item->id) }}">
@@ -68,5 +82,12 @@
               });
           }
         });
+    </script>
+   <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 3, "desc" ]]
+            } );
+        } );
     </script>
 @endsection

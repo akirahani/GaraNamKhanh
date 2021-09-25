@@ -39,9 +39,10 @@
                             @enderror
                         </div>
                         <div class="row align-items-center remember">
-                            <input type="checkbox">Remember Me
+                            <input type="checkbox" hidden>
+                            
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <input type="submit" value="Login" class="btn float-right login_btn">
                         </div>
                     </form>

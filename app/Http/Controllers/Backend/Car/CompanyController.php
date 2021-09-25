@@ -22,6 +22,9 @@ class CompanyController extends Controller
             $arr['address']= $input['address'][$key];
             $arr['website']= $input['website'][$key];
             $arr['email']= $input['email'][$key];
+            $arr['tax_code']= $input['tax_code'][$key];
+            $arr['note']= $input['note'][$key];
+            $arr['rating']= $input['rating'][$key];
             InsuranceCompany::create($arr);
         }
         return redirect()->route('admin.car.company.index');
@@ -38,12 +41,18 @@ class CompanyController extends Controller
         $phone =$input['phone'];
         $email =$input['email'];
         $website =$input['website'];
+        $tax_code =$input['tax_code'];
+        $note =$input['note'];
+        $rating =$input['rating'];
         $data = array(
             'name' => $name,
             'address' => $address,
             'phone'=>$phone,
             'email'=>$email,
-            'website'=>$website
+            'website'=>$website,
+            'tax_code'=>$tax_code,
+            'note'=>$note,
+            'rating'=>$rating,
         );
         $company->where('id',$id)->update($data); 
         return redirect()->route('admin.car.company.index');

@@ -16,12 +16,6 @@ class SpareExistController extends Controller
         ->where("amount",">", 0)
         ->get();
         $exists = SpareDetail::hydrate($exists->toArray());
-        foreach ($exists as $exist) {
-            $exist->dspare->name_spare;
-            $exist->dsupplier->name;
-            $exist->dtype->serial;
-            $exist->dtype->model;
-        }
 
         return view('backend.spare.exist',compact('exists'));
 

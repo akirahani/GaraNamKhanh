@@ -110,7 +110,7 @@
                                         @foreach($repairs->out as $out)
                                  
                                         <tr>
-                                            <td style="border: 1px solid;color:black; " >{{$out->dout->dspare->name_spare}}- {{$out->dout->dsupplier->name}}- {{$out->dout->dtype->serial}}-{{$out->dout->dtype->model}}</td>
+                                            <td style="border: 1px solid;color:black; " >{{$out->dout->dspare->name_spare}}- {{$out->dout->dsupplier->name}}</td>
                                             <td style="border: 1px solid;color:black; " >{{$out->dout->dspare->unit}}</td>
                                      
                                             <td style="border: 1px solid;color:black; ">{{$out->amount_out}} </td>
