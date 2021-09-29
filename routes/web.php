@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
     
     //Shift
     Route::get('/admin/shift','Backend\ShiftController@index')->name('backend.shift.view');
-
+    Route::get('/admin/shift','Backend\ShiftController@index')->name('backend.shift.view');
     Route::post('/admin/shift/update','Backend\ShiftController@update')->name('backend.shift.update');
     Route::post('/admin/shift/store','Backend\ShiftController@store')->name('backend.shift.store');
     Route::post('/admin/shift/destroy','Backend\ShiftController@delete')->name('backend.shift.destroy');
@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/admin/assignment/destroy/{id}','Backend\ShiftController@destroy_group')->name('backend.assignment.destroy');
 
     Route::post('/admin/groupshift/store','Backend\GroupShiftController@store')->name('backend.groupshift.store');
+
     // customer
        Route::get('/admin/customer','Backend\Customer\InfomationController@index')->name('backend.customer');
        Route::get('/admin/customer/insert','Backend\Customer\InfomationController@insert')->name('backend.customer.insert');

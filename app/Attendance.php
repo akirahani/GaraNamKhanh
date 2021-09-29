@@ -10,11 +10,7 @@ class Attendance extends Model
     protected $table = 'attendance';
     protected $fillable = [
         'member_id',
-        'time_in',
-        'time_out',
+        'time',
         'date',
-        'status',
-        'shift_id',
-        'type'
     ];
 }

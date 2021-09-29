@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Shift;
 use App\Member;
+
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Arr;
 use DB;
@@ -14,7 +15,7 @@ use SebastianBergmann\Environment\Console;
 class ShiftController extends Controller
 {
     public function index(Request $request){
-        $shift = Shift::paginate(5);
+        $shift = Shift::first();
         $members = Member::all(); 
         $group_shift = \App\Groupshift::all();
         $member_shift = \App\MemberShift::all();
@@ -55,8 +56,27 @@ class ShiftController extends Controller
         }  
         return view("backend.shift.view",compact('shift','members','group_shift','member_shift','records'));
     }
-    public function create(){
-        return view("backend.shift.create");
+    public function store(Request $request){
+        $count = DB::table('shift')->count();
+        if($count == 1){
+            DB::table('shift')->update([
+            'start_time1' => $request->start_time1,
+            'end_time1' => $request->end_time1,
+            'start_time2' => $request->start_time2,
+            'end_time2' => $request->end_time2,
+            'overtime' => $request->overtime
+            ]);
+        }
+       else{
+            \App\Shift::create([
+                'start_time1' => $request->start_time1,
+                'end_time1' => $request->end_time1,
+                'start_time2' => $request->start_time2,
+                'end_time2' => $request->end_time2,
+                'overtime' => $request->overtime
+            ]);
+       }
+        return redirect()->back();
     }
 
     public function update(Request $request){
@@ -78,7 +98,6 @@ class ShiftController extends Controller
                     'member_id' => $member_id,
                     'date' => $value->format('y-m-d'),
                 ]);
-                
             }
             
             else{

@@ -3,85 +3,56 @@
 
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link show active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Quản lý nhóm ca</a>
-      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Phân ca</a>
-      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Danh sách</a>
+        {{-- <a class="nav-item nav-link show active" id="nav-time-tab" data-toggle="tab" href="#nav-time" role="tab" aria-controls="nav-time" aria-selected="true">Quản lý thời gian</a> --}}
+        <a class="nav-item nav-link show active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Quản lý nhóm ca</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Phân ca</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Danh sách</a>
     </div>
 </nav>
     
     <div class="tab-content" id="nav-tabContent">
+
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <form action="{{ route('backend.groupshift.store') }}" method="POST">
+            <form action="{{ route('backend.shift.store') }}" method="POST">
                 @csrf
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="input-4">Tên nhóm ca</label>
-                            <input name="name" type="text" class="form-control form-control-rounded" id="input-3">
-                        </div>
-                    </div>
-                </div>
                 <div id="form-add">
                     <div class="add">
-                        <div class="row">
+                        <div class="row pt-3">
                             <div class="col-md-3">
-                                <label for="input-7">Thời gian bắt đầu</label>
-                                <input name="start_time[]" type="time" class="form-control form-control-rounded" id="input-6">
+                                <label for="input-7">Thời gian bắt đầu I</label>
+                                <input name="start_time1" type="time" class="form-control form-control-rounded" value="{{ $shift->start_time1 }}">
                             </div>
                             <div class="col-md-3">
-                                <label for="input-9">Thời gian kết thúc</label>
-                                <input name="end_time[]" type="time" class="form-control form-control-rounded" id="input-7">
+                                <label for="input-9">Thời gian kết thúc I</label>
+                                <input name="end_time1" type="time" class="form-control form-control-rounded" value="{{ $shift->end_time1 }}">
                             </div>
-                            <div class="col-md-3" style="margin-top: 40px;">
-                                <a class="btn-add " href="javascript:void(0)">+</a>
+                        </div>
+                    </div>
+                    <div class="add">
+                        <div class="row pt-3">
+                            <div class="col-md-3">
+                                <label for="input-7">Thời gian bắt đầu II</label>
+                                <input name="start_time2" type="time" class="form-control form-control-rounded" value="{{ $shift->start_time2 }}">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="input-9">Thời gian kết thúc II</label>
+                                <input name="end_time2" type="time" class="form-control form-control-rounded" value="{{ $shift->end_time2 }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add">
+                        <div class="row pt-3">
+                            <div class="col-md-4">
+                                <label for="input-7">Thời gian gian đi sớm, về trễ (Tính bằng phút)</label>
+                                <input name="overtime" type="number" class="form-control form-control-rounded" value="{{ $shift->overtime }}">
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="submit"class="btn btn-success "  id="add_group">Thêm</button>
+                <button type="submit" class="btn btn-success mt-5"  id="add_group">Lưu</button>
             </form>
-
-            <div class="row mt-3">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"></h5>       
-                            <div class="table-responsive">
-                                <table class="table" style="text-align:center;">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Nhóm ca</th>
-                                            <th scope="col">Thời gian bắt đầu</th>
-                                            <th scope="col">Thời gian kết thúc</th>
-                                            <th scope="col">Tác vụ</th>                             
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            @foreach ($shift as $key => $item)
-                                            <tr>
-                                                <td scope="row">{{ $key+1 }}</td>
-                                                <td>{!! \App\Groupshift::where('id',[$item->group_id])->first()->name !!}</td>
-                                                <td>{{ $item->start_time }}</td>
-                                                <td>{{ $item->end_time }}</td>
-                                                <td>
-                                                    <a href="{{ route('backend.assignment.destroy',$item->id) }}">
-                                                        <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                    </a>
-                                                </td>
-                                            </tr>    
-                                            @endforeach            
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        {{-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="container list-assignment">
                     <form action="{{ route('backend.shift.assignment') }}" method="POST">
                         @csrf
@@ -128,9 +99,9 @@
                         
                     </form>
             </div>
-        </div>
+        </div> --}}
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-            <div class="row mt-3">
+            {{-- <div class="row mt-3">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
@@ -167,7 +138,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- Modal -->
