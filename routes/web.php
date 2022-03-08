@@ -60,6 +60,7 @@ use Illuminate\Support\Facades\Route;
     //Schedule
     Route::get('/admin/schedule','Backend\Customer\ScheduleController@index')->name('admin.schedule');
     Route::get('/admin/schedule/destroy/{id}','Backend\Customer\ScheduleController@delete');
+    Route::post('admin/schedule/update','Backend\Customer\ScheduleController@update');
    
        Route::get('/admin/spare/delete/{id}' ,'Backend\SparePart\SparePartController@delete')->name('backend.spare.delete');
       //supplier

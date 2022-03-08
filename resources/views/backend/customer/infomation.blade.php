@@ -22,14 +22,13 @@
                                 <th scope="col">Đối tượng khách hàng</th>     
                                 <th scope="col">Ản đại diện</th>     
                                 <th scope="col">Ngày sinh</th>     
-                                <th scope="col">Thông tin doanh nghiệp</th>     
-                                <th scope="col">Thông tin liên quan</th>     
+                                <!-- <th scope="col">Thông tin doanh nghiệp</th>     
+                                <th scope="col">Thông tin liên quan</th>      -->
                                 <th scope="col">Tác vụ</th>           
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                @foreach ($customer as $key => $item)
+                            @foreach ($customer as $key => $item)
                                 <tr id="customer{{$item->id}}">
                                     <td scope="row">{{  $key+1 }}</td>
                                     <td>{{  $item->name }}</td>
@@ -43,8 +42,8 @@
                                     @endforeach
                                     <td><img src="{{ url('/') }}/assets/images/customer/{{$item->avatar}}" alt="1" width="100%"></td>
                                     <td>{{ $item->birthday }}</td>
-                                    <td>{{ $item->business_infomation }}</td>
-                                    <td>{{ $item->related_infomation }}</td>
+                                    <!-- <td>{{ $item->business_infomation }}</td>
+                                    <td>{{ $item->related_infomation }}</td> -->
                                     <td>
                                         
                                         <a class="btn btn-info"href="{{ route('backend.customer.edit',$item->id) }}">
@@ -55,8 +54,7 @@
                                         </a>
                                     </td>
                                 </tr>    
-                                @endforeach            
-                            </tr>
+                            @endforeach            
                         </tbody>
                     </table>
                 </div>
@@ -86,7 +84,7 @@
    <script>
         $(document).ready(function() {
             $('#example').DataTable( {
-                "order": [[ 3, "desc" ]]
+                "order": [[ 1, "asc" ]]
             } );
         } );
     </script>

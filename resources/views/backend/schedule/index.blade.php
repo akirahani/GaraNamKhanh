@@ -2,106 +2,160 @@
 @section('content')
 <div class="row mt-3">
     <div class="col-lg-12">
+        <h3 style="text-align: center"> Lịch hẹn </h3>
         <div class="card">
             <div class="card-body">
-            <!-- <a class="btn btn-success" href="{{ route('backend.member.create') }}">
-                    <i class="fas fa-user-plus"></i>
-                </a> -->
-                <h5 class="card-title"></h5>       
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Họ và tên</th>
-                                <th scope="col">Điện thoại</th>
-                                <th scope="col">Giờ</th>
-                                <th scope="col">Ngày</th> 
-                                <th scope="col">Quãng đường đã chạy</th> 
-                                <th scope="col">Yêu cầu</th>
-                                <th scope="col">Trạng thái</th>
-                                <th scope="col"></th>                 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($book as $key => $item)
-                            <tr id="member-{{$item->id}}">
-                                <input value="{{$item->id}}" id="id" hidden>
-                                <td scope="row">{{ $key+1 }}</td>
-                                <td>{{ $item->customer->name }}</td>
-                                <td>{{ $item->customer->phone }}</td>   
-                                <td>{{ $item->hour }} </td>         
-                                <td>{{ $item->day }} </td>  
-                                <td>{{ $item->run_distance  }} </td> 
-                                <td>{{ $item->want  }} </td>
-                                <td>
-                                    @if(\App\Book::status_pending['id'] == $item->status)
-                                    {{ \App\Book::status_pending['name']  }} 
-                                    @elseif(\App\Book::status_success['id'] == $item->status)
-                                    {{ \App\Book::status_success['name']  }} 
-                                    @elseif(\App\Book::status_other['id'] == $item->status)
-                                    {{ \App\Book::status_other['name']  }} 
-                                    @endif
-                                </td>
-                                @if(\App\Book::status_pending['id'] == $item->status)
-                                <td>
-                                    <a class="btn btn-success submit" id="submit" data-id="{{$item->id}}" >
-                                        <i class="fas fa-check"></i>
-                                    </a>
-                                    <a data-id="{{$item->id}}" class="memdel btn btn-danger">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                                @endif
-                            </tr>    
-                          
-                            @endforeach 
-                        </tbody>
-                    </table>
+                <div class="container-fluid">
+                        <div id='calendar'>
+                                
+                        </div>
+                <div class="overlay toggle-menu"></div> 
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle" style="color:black">Lịch hẹn</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                        <form id ="modal-main">
+                               {{csrf_field()}}
+                     
+                               <div class="form-group">
+                                    <input style="background-color:#bbbb" type="hidden" name="id" id="id"   value="" class="form-control" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="type_date" style="color:black">Khách hàng</label>
+                                    <input style="background-color: #66aac3;" type="text" id="customer"  value=""  class="form-control" required >
+                                </div>
+                                <div class="form-group">
+                                    <label for="type_date" style="color:black">Số điện thoại</label>
+                                        <input style="background-color: #66aac3;" type="text" id="phone"  value=""  class="form-control" required >
+                                </div>
+                                <div class="form-group">
+                                    <label for="type_date" style="color:black">Biển số xe</label>
+                                        <input style="background-color: #66aac3;" type="text" id="license_plate"  value=""  class="form-control" required >
+                                </div>
+                                <div class="form-group">
+                                    <label for="date" style="color:black" >Thời gian sớm nhất có thể</label>
+                                    <input style="background-color: #66aac3;" type="datetime" id="start_time"  value=""  class="form-control" required >
+                                </div>
+                                <div class="form-group">
+                                        <label for="date" style="color:black" >Thời gian muộn nhất có thể</label>
+                                <input type="datetime" style="background-color: #66aac3;"  id="end_time" disabled value="" required="required"  class="form-control">
+                                </div>
+                                <!-- <input type="text" style="background-color: #66aac3;"  id="date"  required="required"  class="form-control"> -->
+                                <div class="form-group">
+                                        <label for="date" style="color:black" >Trạng thái</label>
+                               
+                                        <input type="text" style="background-color: #66aac3;"  id="status" disabled value="{{App\Schedule::status1['name']}}" required="required"  class="form-control">
+                                  
+                                </div>
+                                <div class="form-group">
+                                        <label for="date" style="color:black" >Nội dung bảo dưỡng</label>
+                                        <input type="text" style="background-color: #66aac3;"  id="content" value="" required="required"  class="form-control">
+                                </div>
+
+                                <div class="form-group" style="margin-left:45%">
+                                    <ul style=" list-style: none; display:flex;">
+                                        <li style=" padding: 2px">
+                                            <button type="button" id="submit" class="btn btn-success" >Xác nhận</button>
+                                        </li>
+                                        <li style=" padding: 2px">
+                                            <button type="button" id="suggestions" class="btn btn-warning">Gợi ý lịch</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                 
+                                </form>
+                        </div>
+                        </div>
                 </div>
+        </div>
             </div>
         </div>
     </div>
-     <!-- Modal -->
+</div>
 
 
-    <script>
-        $('.memdel').click(function(){
-         const id = $(this).data('id');
-         var cfrm = confirm("Bạn có chắc chắn muốn xóa ?");
-             if(cfrm == true){
-              $.ajax({
-                  type:"GET",
-                  url: "/api/book/delete/"+id,
-                  headers: {
-                    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBjN2UwMTQ4ZTJlN2MzOGJmMTQ1MjIwMWE3YWRhYTFlOTc0NmQ5MGVjZjE2NTFlNjU3YzE4MjEwNTg5YmEyZWFlNGJlZDBkYmQwYjMzZDdjIn0.eyJhdWQiOiIxIiwianRpIjoiMGM3ZTAxNDhlMmU3YzM4YmYxNDUyMjAxYTdhZGFhMWU5NzQ2ZDkwZWNmMTY1MWU2NTdjMTgyMTA1ODliYTJlYWU0YmVkMGRiZDBiMzNkN2MiLCJpYXQiOjE2MjcyOTI2OTIsIm5iZiI6MTYyNzI5MjY5MiwiZXhwIjoxNjU4ODI4NjkyLCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.i8-wsnsIJrbAkVkbTeQ04L7aFmRrGwcZE7AnHwFXq7wRkrSDAfJBLOiKIjcPWh7CSkYRdZPCfLoZc9QjeigNi0EiR24G4d-Fpuzc-uI4b8KA4_widfz2Vw2pdMUwTqZaema5Fhkh3kogzFuCgpqUg6HTPSBltVZTS7tZk3op82dn5GbeEgef44mXiKf5DZGi3ONPvV16JhNmu2CpAU4Nuywj4ZMNDH2isRRF3xfrrpqt5a0lSSQMFfXJZqtEBZhT97wVsK4kMIxE-DmfxPGZ07T27HCr0GC79itVLWiEuirimezB6smKI68l8WcKoiqC6a1F-0OKLrr8XeQlOwi-PdliKGDIw24VHcmxyx5kU91CSw7K65V-j2dzrBbRlyjD-bcSDOcKB-LyIdEizXtKSTzFlCNlCx1QA88KbvPFxH0gQn8wDf7ZarEKjk6ZdczVbhnoggBS4PLnafO0l2-_3ZlVYsX5SjezYvPXkdtqjfCpX6kusgxDRfHnpdO9r5hoLPkNnkYFQpb0D3i-odLoMa0ZcU7aMaHDNwj2ntxcophxXcSvH_YcRwHrl_qjyep3TYEwfP5vRBQ3DFriBS7Iui31EMM85aLozcfyzbmIptClvES6m5E8HyaN5Yqj5VlQBGhWkzvzj3JjKaBOP5MPgg1IOChIIi3BzRAxZTFMQFE'
-                },
-                  data: {
-                    'id': id
-                  },
-                  success:function(){
-                    location.reload();
-                  }
-
-              });
-          }
+<script>
+     $(document).ready(function() {
+        var events = {!!$schedules!!};
+        var info = {!!$customer_info!!};
+        console.log(info);
+        $('#calendar').fullCalendar
+        ({           
+                        editable: true,
+                        header:{
+                                left: 'prev, next today',
+                                center: 'title',
+                                right:'month, agendaWeek, agendaDay'
+                        },
+                        events: function (start, end, tz, callback) {
+                                callback(events);
+                        },
+                                selectable:true,
+                                selectHelper: true,
+                        select:function(date,allDay)
+                                {
+                        
+                                // var date = $.fullCalendar.formatDate(date,'DD-MM-Y');
+                                // $('#date').val(date);
+                                // $("#exampleModalCenter").modal('show');
+                                },
+                        eventClick: function(info) {
+                                var status =$('#status').val(info.status);
+                                events.forEach((item,index)=>{
+                                       if(info.customer_id == item.member.id){
+                                        var customer =$('#customer').val(item.member.name);
+                                        var phone =$('#phone').val(item.member.phone);
+                                        var license_plate =$('#license_plate').val(item.car.license_plate);
+                                    }
+                                });
+                                var start_time= $('#start_time').val(info.start_time);
+                                var end_time= $('#end_time').val(info.end_time);
+                                var content= $('#content').val(info.content);
+                                var id= $('#id').val(info.id);
+                                $("#exampleModalCenter").modal('show');
+                        },
         });
+        $('#submit').click(function(){
+            var status = 1;
+            var id =  $('#id').val();
+            $.ajax({                                                
+                    headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url:"/admin/schedule/update",
+                    type: "POST",
+                    data:{
+                            id: id,
+                            status: status,
+                            type: 'update',
+                    },
+                    success:function(response)
+                    {
+                            $("#exampleModalCenter").modal('hide');
+                            events.forEach((item,index)=>{
+                                        if(item.id == id )
+                                                events[index].status = status 
+                            })
+                            events.push({id: response.id , status: status});
+                            $('#calendar').fullCalendar('refetchEvents');
+                            swal({
+                            title: "Cập nhật lịch thành công",
+                            icon: "success",
+                            
+                            });
+                            $('#modal-main')[0].reset();
+                    }      
+            })   
+        });
+ });    
+</script>
+
     
-        $('.submit').click(function(){
-            var id = $(this).data('id');
-            $.ajax({
-                url: "{{route('book.update')}}",
-                type :"POST",
-                headers: {
-                    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBjN2UwMTQ4ZTJlN2MzOGJmMTQ1MjIwMWE3YWRhYTFlOTc0NmQ5MGVjZjE2NTFlNjU3YzE4MjEwNTg5YmEyZWFlNGJlZDBkYmQwYjMzZDdjIn0.eyJhdWQiOiIxIiwianRpIjoiMGM3ZTAxNDhlMmU3YzM4YmYxNDUyMjAxYTdhZGFhMWU5NzQ2ZDkwZWNmMTY1MWU2NTdjMTgyMTA1ODliYTJlYWU0YmVkMGRiZDBiMzNkN2MiLCJpYXQiOjE2MjcyOTI2OTIsIm5iZiI6MTYyNzI5MjY5MiwiZXhwIjoxNjU4ODI4NjkyLCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.i8-wsnsIJrbAkVkbTeQ04L7aFmRrGwcZE7AnHwFXq7wRkrSDAfJBLOiKIjcPWh7CSkYRdZPCfLoZc9QjeigNi0EiR24G4d-Fpuzc-uI4b8KA4_widfz2Vw2pdMUwTqZaema5Fhkh3kogzFuCgpqUg6HTPSBltVZTS7tZk3op82dn5GbeEgef44mXiKf5DZGi3ONPvV16JhNmu2CpAU4Nuywj4ZMNDH2isRRF3xfrrpqt5a0lSSQMFfXJZqtEBZhT97wVsK4kMIxE-DmfxPGZ07T27HCr0GC79itVLWiEuirimezB6smKI68l8WcKoiqC6a1F-0OKLrr8XeQlOwi-PdliKGDIw24VHcmxyx5kU91CSw7K65V-j2dzrBbRlyjD-bcSDOcKB-LyIdEizXtKSTzFlCNlCx1QA88KbvPFxH0gQn8wDf7ZarEKjk6ZdczVbhnoggBS4PLnafO0l2-_3ZlVYsX5SjezYvPXkdtqjfCpX6kusgxDRfHnpdO9r5hoLPkNnkYFQpb0D3i-odLoMa0ZcU7aMaHDNwj2ntxcophxXcSvH_YcRwHrl_qjyep3TYEwfP5vRBQ3DFriBS7Iui31EMM85aLozcfyzbmIptClvES6m5E8HyaN5Yqj5VlQBGhWkzvzj3JjKaBOP5MPgg1IOChIIi3BzRAxZTFMQFE'
-                },
-                data: {
-                    'id': id
-                  },
-                  success:function(){
-                    location.reload();
-                  }
-            });
-        });
-    </script>
+
 @endsection

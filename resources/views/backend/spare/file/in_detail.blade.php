@@ -47,9 +47,9 @@
                                         <input name="price_in[]" value="{{$val->dspare->price}}" class="form-control" required readonly>
                                     </td>
                                     <td  style="border: 1px solid;color:black " >
-                                    @if($file_in->status == \App\FileIn::wait['id'])
-                                        <input name="amount_in[]" class="form-control" required>
-                                    @endif
+                       
+                                        <input name="amount_in[]" class="form-control" required readonly value="{{$val->pivot->amount_in}}">
+                                
                                     </td>
                                  
                                 </tr>
@@ -58,14 +58,36 @@
                         </tbody>
                     </table>      
                 </div>
-                <!-- <button class="btn btn-info" style="margin-left:90%"onclick="window.print()"><i class="fas fa-print" style="font-size:25px"></i></button>   -->
+             
             </div>
             <div class="tab" style="margin-left:90%">
                 @if($file_in->status == \App\FileIn::wait['id'])
                 <button class="btn btn-warning" type="submit" >  <i class="fas fa-file-import"  style="font-size:25px"></i></button>
+                @elseif($file_in->status == \App\FileIn::accept['id'])
+                <button class="btn btn-info" style="margin-left:50%"onclick="window.print()"><i class="fas fa-print" style="font-size:25px"></i></button>  
                 @endif
             </div>
         </form> 
     </div>
  
 </div>
+<script>
+         $('.filein').click(function(){
+         const id = $(this).data('id');
+         var cfrm = confirm("Bạn có chắc chắn muốn xóa ?");
+             if(cfrm == true){
+              $.ajax({
+                  method:"get",
+                  url: "/admin/file/in/delete/"+id,
+                  data: {
+                    "_token": "{{ csrf_token() }}",
+                    'id': id
+                  },
+                  success:function(){
+                    $('#filein-'+id).remove();
+                  }
+
+              });
+          }
+        });
+</script>

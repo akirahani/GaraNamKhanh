@@ -54,7 +54,7 @@
                             <img  class="img-display"/> 
                         </div>
                         <label for="partner-img" class="btn btn-info mt-2 "><i class="fas fa-upload"></i>Chọn ảnh
-                            <input type='file' id="partner-img" name="avatar" accept="image/*"    class=" mb-2"  required multiple hidden/>
+                            <input type='file' id="partner-img" name="avatar" accept="image/*"    class=" mb-2" multiple hidden/>
                         </label> 
                     
                     </div>

@@ -15,10 +15,12 @@ class CreateSpareInsTable extends Migration
     {
         Schema::create('spare_ins', function (Blueprint $table) {
             $table->id();
+            $table->string('content');
             $table->bigInteger('id_spare');
-            $table->bigInteger('id_notification');
+            $table->bigInteger('id_filein');
             $table->bigInteger('amount_in');
             $table->bigInteger('price_in');
+            $table->bigInteger('all_in');
             $table->timestamps();
         });
     }

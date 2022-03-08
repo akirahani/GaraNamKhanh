@@ -26,7 +26,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
                                 @foreach ($company as $key => $item)
                                 <tr id="company-{{$item->id}}">
                                     <td scope="row">{{  $key+1 }}</td>
@@ -55,7 +54,6 @@
                                     </td>
                                 </tr>    
                                 @endforeach            
-                            </tr>
                         </tbody>
                     </table>
                 </div>

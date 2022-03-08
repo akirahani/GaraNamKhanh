@@ -30,6 +30,7 @@ class FileOutController extends Controller
         ->join('suppliers','spare_details.id_supplier','=','suppliers.id')
         ->select('spare_details.*', 'references.name_spare','references.unit','references.serial','references.model', 'suppliers.name')
         ->where('amount','>',0)->get();
+  
         return view('backend.spare.file.out_create',compact('spd','customers'));
     }
     public function insert(Request $request){

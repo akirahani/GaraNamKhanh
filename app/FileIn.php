@@ -16,7 +16,7 @@ class FileIn extends Model
     CONST accept = ['id'=>1, 'name'=>'Đồng ý'];
     CONST cancel = ['id'=>2, 'name'=>'Hủy'];
     public function fin_spare(){
-        return $this->belongsToMany(SpareDetail::class,'fin_spares','id_fin','id_spare');
+        return $this->belongsToMany(SpareDetail::class,'fin_spares','id_fin','id_spare')->withPivot('amount_in');
     }
     public function in(){
         return $this->belongsTo(SpareIn::class,'id_filein');

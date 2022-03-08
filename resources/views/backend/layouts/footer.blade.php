@@ -24,10 +24,7 @@
 
     <!-- Custom scripts -->
     <script src="{{ asset('assets/js/app-script.js') }}"></script>
-    <!-- Chart js -->
-    
     <script src=" {{ asset('assets/plugins/Chart.js/Chart.min.js') }}"></script>
+    <!-- Chart js -->
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>

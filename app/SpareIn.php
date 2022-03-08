@@ -10,7 +10,7 @@ class SpareIn extends Model
 {
     protected $table = 'spare_ins';
     protected $fillable = [
-        'content','id_spare','id_filein','amount_in','price_in','all_in'
+      'id_spare','id_filein','amount_in','price_in','all_in'
     ];
     public function ins(){
         return $this->belongsTo(PriceNotification::class,'id_notification');

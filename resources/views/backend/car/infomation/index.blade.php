@@ -16,6 +16,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Biển số xe</th>
                                 <th scope="col">Tên xe</th>
+                                <th scope="col">Màu sơn</th>    
                                 <th scope="col">Số máy</th>
                                 <th scope="col">Số khung</th>              
                                 <th scope="col">Năm sản xuất</th>     
@@ -26,12 +27,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
                                 @foreach ($car as $key => $item)
                                 <tr id="car{{$item->id}}">
                                     <td scope="row">{{  $key+1 }}</td>
                                     <td>{{  $item->license_plate }}</td>
-                                    <td>{{ $item->name }}- {{ $item->color}}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->color}}</td>
                                     <td>{{ $item->engine }}</td>
                                     <td>{{ $item->chassis}}</td>
                                     <td>{{ $item->year_manufacture}}</td>
@@ -42,13 +43,12 @@
                                         <a class="btn btn-info"href="{{ route('admin.car.edit',$item->id) }}">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <!-- <a data-id="{{$item->id}}" class="base-del btn btn-danger">
+                                        <a data-id="{{$item->id}}" class="base-del btn btn-danger">
                                             <i class="fas fa-trash-alt"></i>
-                                        </a> -->
+                                        </a>
                                     </td>
                                 </tr>    
                                 @endforeach            
-                            </tr>
                         </tbody>
                     </table>
                 </div>

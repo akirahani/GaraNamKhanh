@@ -14,8 +14,8 @@
 
     <tr>
       <td scope="col">#</td>
-    @foreach($records as $record )
-      <th scope="row">{!! $record['date'] !!}</th>
+    @foreach($day_arrs as $day_arr )
+      <th scope="row">{!! $day_arr['date'] !!}</th>
     @endforeach
 
       <th scope="col"><b>HC</b></th>
@@ -28,29 +28,24 @@
 
   <tbody>
 
-  @foreach($members as $val)
+  @foreach($members as $key=>$value)
     <tr>
-      <td scope="col"><a href="{{ url('/admin/report/detail/'.$val->id)}}">{{$val->name}}</a></td>
-      @foreach($val->time as $timeg)
+      <td scope="col"><a href="{{ url('/admin/report/detail/'.$value->id)}}">{{$value->name}}</a></td>
+    
+      @foreach($value['daytime'] as $timeg)
         <td scope="col">
-          {{ $timeg['time'] }}
+          {{ $timeg['daytime'] }}
         </td>
-        @endforeach
-        @foreach($val->timework as $work)
-      <td scope="col">{{ $work['timework']}}</td>
-        @endforeach
-      @foreach($val->overtime as $ovt)
-      <td scope="col"> {{ $ovt['overtime'] }}</td>
       @endforeach
-      @foreach($val->total as $totals)
         <td scope="col">
-          {{ $totals['total'] }}
+        </td>
+        <td scope="col">
+        </td>
+        @foreach($value['total'] as $total)
+        <td scope="col">
+          {{$total['total']}}
         </td>
         @endforeach
-       
-        </td>
-
-      
     </tr>
     @endforeach
   </tbody>

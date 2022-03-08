@@ -13,8 +13,6 @@ class Book extends Model
     const status_pending = ['id'=> 0,'name'=> 'Chờ xác nhận'];
     const status_success = ['id'=> 1,'name'=> 'Chấp thuận'];
     const status_other = ['id'=> 2,'name'=> 'Không chấp thuận'];
-    public function customer(){
-        return $this->belongsTo(Customer::class,'customer_id');
-    }
+  
     
 }

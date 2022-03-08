@@ -37,6 +37,7 @@
                     <a data-id="{{$fin->id}}" class="filein btn btn-danger">
                          <i class="fas fa-trash" style="font-size:15px"></i>
                     </a>
+                    
                     @endif
                 </td> 
             </tr>

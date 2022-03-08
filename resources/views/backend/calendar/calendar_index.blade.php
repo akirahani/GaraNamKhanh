@@ -127,6 +127,10 @@
                         </div>
                 </div>
         </div>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+    
         <script>
  
                 $(document).ready(function() {
@@ -263,25 +267,18 @@
                                                        url:"/admin/calendar/action",
                                                        type: "POST",
                                                        data:{
-                                                       
                                                                id:id1, 
-                                                               type: 'delete',
-                                                               
+                                                               type: 'delete',  
                                                        },
                                                        success:function(response)
                                                        {   
-                                                      
                                                                $("#detail").modal('hide');
-                                                       
                                                                events= events.filter(val => val.id != id1);   
                                                                $('#calendar').fullCalendar('refetchEvents');
                                                                swal({
                                                                title: " This day has been Deleted  ",
                                                                icon: "success",
-                                                               
                                                                });
-                                                       
-                                                             
                                                        }      
                                                        })
                                        }       
@@ -290,6 +287,8 @@
                
                        });      
                </script>  
-  
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+
+
 @endsection

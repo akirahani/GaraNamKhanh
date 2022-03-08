@@ -6,8 +6,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Date</th>
-      <th scope="col">Time In</th>
-      <th scope="col">Time Out</th>
+      <th scope="col">Time</th>
     </tr>
   </tdead>
   <tbody>
@@ -23,11 +22,9 @@
         {!! $att->date!!}
       </td>
       <td scope="col">
-        {!! $att->time_in!!}
+        {!! $att->time!!}
       </td>
-      <td scope="col">
-        {!!$att->time_out!!}
-      </td>
+ 
    
     </tr>
    @endforeach 

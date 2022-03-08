@@ -32,6 +32,7 @@
     <!-- Custom Style-->
     <link href="{{ asset('assets/css/app-style.css') }}" rel="stylesheet"/>
 
+    
     <link href="{{ asset('assets/plugins/fullcalendar/css/fullcalendar.min.css') }}" rel='stylesheet'/>
     <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel='stylesheet' />
@@ -41,4 +42,8 @@
     <script src="{{asset('assets/js/jquery3.5.1.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/dataTable.css') }}">
     <script src="{{asset('assets/js/dataTables.min.js')}}"></script>
+    <!-- fullcalendar -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
 </head>

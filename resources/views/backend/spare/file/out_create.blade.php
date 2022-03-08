@@ -29,14 +29,16 @@
                                 <label for="input-7">Nội dung (Tên phụ tùng- Nhà cung cấp- Serial- Model) </label>
                                 <select class="form-select"   aria-label="Default select example" name="id_spareout[]"  >
                                     @foreach($spd as $val)
-                                            <option style="background-color:white" >{{$val->id}} - {{$val->name_spare}}- {{$val->name}}- {{$val->serial}}- {{$val->model}}</option>
+                                            <option style="background-color:white" >{{$val->id}} - {{$val->name_spare}}- {{$val->name}}- {{$val->serial}}- {{$val->model}}-   {{$val->amount}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <!-- <div class="form-group col-2">
+                            <div class="form-group col-2">
                                 <label for="input-7">Số lượng</label>
-                                <input name="amount_out[]" type="number" min="1" class="form-control form-control-rounded" id="input-7" required>
-                            </div> -->
+                              
+                                <!-- <input name="amount_out[]" value="" type="number" min="1" class="form-control form-control-rounded" id="input-7" required> -->
+                              
+                            </div>
                             <div  class="col-1" style="margin-top: 30px;">
                                 <a class="btn-add0" href="javascript:void(0)" style="font-size: 30px"><i class="fas fa-plus-circle"></i></a>
                             </div> 
@@ -64,10 +66,10 @@
                             '@endforeach'+
                     '</select>'+
                     '</div>'+
-                    // '<div class="form-group col-2">'+
-                    //     '<label for="input-7">Số lượng</label>'+
-                    //     '<input name="amount_out[]" type="number" min="1" class="form-control form-control-rounded" id="input-7" required>'+
-                    // '</div>'+
+                    '<div class="form-group col-2">'+
+                        '<label for="input-7">Số lượng</label>'+
+                        '<input name="amount_out[]" type="number" min="1" class="form-control form-control-rounded" id="input-7" required>'+
+                    '</div>'+
                     '<div  class="col-1  " style="margin-top: 30px;">'+
                         '<a class="btn-remove" href="javascript:void(0)" style="font-size: 30px"><i class="fas fa-minus-circle"></i></a>'+
                     '</div>'+

@@ -19,7 +19,6 @@
                  
                       <a href="{{url('/admin/calendar')}}">
                         <i class="zmdi zmdi-calendar-check"></i> <span>Tạo lịch ngày nghỉ, lễ</span>
-                        <small class="badge float-right badge-light">New</small>
                       </a>
                       </li>
                       <li>
@@ -46,25 +45,25 @@
                          </ul> 
                         
                   <li>
-                      <a  href="#down-content2"  data-toggle="collapse" >
-                        <i class="zmdi zmdi-calendar-alt"></i> <span>Quản lí xếp lịch</span> <i class="fa fa-caret-down" style="margin-left:22%;"></i>
+                      <a  href="#down-content2"  >
+                        <i class="zmdi zmdi-calendar-alt"></i> <span>Quản lí lịch hẹn</span> 
                      
                       </a>
-                      <li id="down-content2" class="collapse" style="margin-left:10%;">
+                      <li id="down-content2"  style="margin-left:10%;">
                             <a href="{{url('/admin/schedule')}}">
-                              <i class="zmdi zmdi-undo"></i> <span>Phản hồi đặt lịch</span>
+                              <i class="far fa-calendar-alt"></i> <span>Lịch</span>
                             </a>
                             <a >
-                              <i class="zmdi zmdi-redo"></i> <span>Nhắc lịch bảo dưỡng</span>
+                              <i class="far fa-bell"></i> <span>Cài đặt thông báo</span>
                             </a>
                         </li>
                   </li>
                   <li>
                       <a href="#down-content1" data-toggle="collapse">
                         <i class="zmdi zmdi-car"></i>
-                        <span>Quản lí xe</span>  <i class="fa fa-caret-down" style="margin-left:10%;"></i>
+                        <span>Quản lí xe</span>  
                       </a>
-                          <li id="down-content1" class="collapse" style="margin-left:10%;">
+                          <li id="down-content1"  style="margin-left:10%;">
                             <a href="{{url('/admin/car/index')}}">
                               <i class="fas fa-info-circle"></i> <span>Thông tin xe</span>
                             </a>
@@ -96,11 +95,11 @@
                             </a>      
                           </li>
                   <li>
-                      <a  href="#down-content" data-toggle="collapse" class="drop-down">
+                      <a  href="#down-content" class="drop-down">
                         <i class="fas fa-boxes"></i>
-                        <span>QL kho</span>  <i class="fa fa-caret-down" style="margin-left:45%;"></i>
+                        <span>QL kho</span>
                       </a>
-                          <li id="down-content" class="collapse" style="margin-left:10%;">
+                          <li id="down-content"  style="margin-left:10%;">
                               <a href="{{url('/admin/spare/exist')}}">
                                 <i class="fas fa-dolly-flatbed"></i> <span>Tồn kho</span>
                               </a>
@@ -122,9 +121,9 @@
 
                       <a  href="#down-content3" data-toggle="collapse">
                         <i class="far fa-list-alt"></i>
-                        <span>QL dịch vụ</span>  <i class="fa fa-caret-down"  style="margin-left:35%;"></i>
+                        <span>QL dịch vụ</span>  
                       </a>
-                          <li id="down-content3" class="collapse" style="margin-left:10%;">
+                          <li id="down-content3"  style="margin-left:10%;">
                             <a href="{{url('/admin/spare/search/index')}}">
                               <i class="fas fa-search-dollar"></i> <span>Tham khảo</span>
                             </a>

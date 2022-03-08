@@ -15,11 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['auth:api']], function() {
-    //book
-    Route::post('/book/store','Api\BookController@store')->name('book.store');
-    Route::get('/book/edit/{id}','Api\BookController@update')->name('book.edit');
-    Route::post('/book/update','Api\BookController@update')->name('book.update');
-    Route::get('/book/delete/{id}','Api\BookController@delete')->name('book.delete');
+    //schedule
+    Route::post('/schedule/update','Api\BookController@update')->name('book.update');
    //notification
    Route::get('/option/index/{id}','Api\OptionController@index')->name('option.index');
    Route::post('/option/update','Api\OptionController@update')->name('option.update');

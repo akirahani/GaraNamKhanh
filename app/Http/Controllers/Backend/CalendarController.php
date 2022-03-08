@@ -10,11 +10,13 @@ class CalendarController extends Controller
     public function calendar(Request $request)
     {
         if($request->ajax()){
+  
             $data= Calendar::whereDate('date','=',$request->date)
                         ->get(['id','type_date','date','title']);
             return response()->json($data);
     
         }
+
         
         $calendar= Calendar::all();
         return view('backend.calendar.calendar_index',compact('calendar'));

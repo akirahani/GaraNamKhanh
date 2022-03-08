@@ -27,9 +27,8 @@ class FileInController extends Controller
         $filein['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');
         $filein->save();  
    
-        foreach($input['id_sparein'] as $k =>$value){
-                
-            $filein->fin_spare()->attach($input['id_sparein'][$k]);
+        foreach($input['id_sparein'] as $k =>$value){         
+            $filein->fin_spare()->attach($input['id_sparein'][$k],['amount_in'=>$input['amount_in'][$k]]);
          }
         return redirect()->route('admin.file.in');
     }
